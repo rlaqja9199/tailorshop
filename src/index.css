@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&family=Calligraffitti&family=Libre+Caslon+Display&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont,'Libre Caslon Display', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,4 +12,34 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box;}
+a {text-decoration: none; color:inherit; }
+img { vertical-align: top; }
+table {
+    border-collapse: collapse;
+}
+li { list-style: none;}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+address {
+    font-style: normal;
+}
+input, select {
+    outline: none;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+body{
+  width: 100%;
+  height: 100%;
+  background-color: #000c1d;
+}
+#root {
+  width: 100%;
+  height: 100%;
 }

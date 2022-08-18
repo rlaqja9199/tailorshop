@@ -1,0 +1,21 @@
+@keyframes slideImgAni {
+    from{
+        transform: scale(1.03);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+#mainSlide {
+    width: 100%;
+    height: 100%;
+}
+#mainSlide img{
+    filter: brightness(70%);
+    width: 100%;
+    height: 100%;
+}
+.slick-current{
+    animation: slideImgAni 5s;
+    animation-fill-mode: backwards;
+}

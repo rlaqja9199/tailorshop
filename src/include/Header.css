@@ -1,0 +1,182 @@
+#header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    z-index: 100;
+}
+#header h1{
+    font-size: 42px;
+    color: #aaa;
+    margin-left: 18px;
+    cursor: pointer;
+}
+#menu {
+    width: 50px;
+    height: 50px;
+    background: #000c1d;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+#menu p {
+    font-size: 16px;
+    color: #fff;
+    height: 50%;
+    font-weight: 500;
+}
+
+#burgerTab {
+    width: 100%;
+    height: 50%;
+    position: relative;
+}
+
+#menu:hover #wineLine div:nth-child(1){
+    width: 30px;
+    transition: 0.5s;
+}
+#menu:hover #wineLine div:nth-child(2){
+    width: 30px;
+    transition: 0.5s 0.25s;
+}
+#menu:hover p{
+    color: #725040;
+    transition: 0.5s 0.5s;
+}
+#whiteLine {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#whiteLine div:nth-child(1){
+    width: 30px;
+    height: 1px;
+    background-color: #fff;
+}
+#whiteLine div:nth-child(2){
+    width: 30px;
+    height: 1px;
+    background-color: #fff;
+}
+#wineLine {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#wineLine div:nth-child(1){
+    width: 0;
+    height: 1px;
+    background-color: #725040;
+    position: absolute;
+    top: 8px;
+    left: 10px;
+}
+#wineLine div:nth-child(2){
+    width: 0;
+    height: 1px;
+    background-color: #725040;
+    position: absolute;
+    top: 16px;
+    left: 10px;
+}
+#menuScreen {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0vh;
+    left: 0;
+    overflow: hidden;
+    cursor: initial;
+    transition: 0.8s;
+}
+#menuWrap {
+    width: 100%;
+    height: 100vh;
+    background-color: #302625;
+    display: flex;
+}
+#menuWrap>div{
+    width: 50%;
+    overflow: hidden;
+}
+#menuWrap div img{
+    width: 200%;
+}
+#menuWrap ul {
+    width: 50%;
+    height: 100vh;
+    padding: 10% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+#menuWrap ul li{
+    text-align: center;
+    color: #fff;
+    font-size: 36px;
+    cursor: pointer;
+    display: flex;
+    padding-left: 15%;
+    position: relative;
+
+}
+#menuWrap ul li span::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: 0.5s;
+    bottom: 0;
+}
+#menuWrap ul li span:hover::after {
+    width: 100%;
+}
+#menuWrap ul #closeIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: initial;
+}
+#closeIconWrap {
+    position: absolute;
+    display: inline-block;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    right: 8px;
+    top: 5px;
+    opacity: 0;
+    transition: 0.5s 0.8s;
+}
+#closeIconWrap div:nth-child(1){
+    width: 30px;
+    height: 1px;
+    background-color: #fff;
+    transform: rotateZ(45deg);
+    position: absolute;
+    top: 15px;
+    right: 0px;
+}
+#closeIconWrap div:nth-child(2){
+    width: 30px;
+    height: 1px;
+    background-color: #fff;
+    transform: rotateZ(-45deg);
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
