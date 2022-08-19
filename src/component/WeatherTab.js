@@ -6,7 +6,13 @@ class WeatherTab extends Component {
     // 상태 변수 정의
     constructor(props) {
         super(props);
-        this.state = { temp: 0, desc: '', icon: '', loading: true }
+        this.state = {
+            temp: 0, 
+            desc: '', 
+            icon: '', 
+            loading: true,
+            wOpacity: 0,
+        }
     }
     // 컴포넌트 생성 후 날씨 정보 조회
     componentDidMount() {
@@ -30,7 +36,6 @@ class WeatherTab extends Component {
         // axios 라이브러리 이용
         axios.get(url)
             .then(responseData => {
-                console.log(responseData);
                 const data = responseData.data;
                 this.setState({
                     temp: data.main.temp,
@@ -49,19 +54,22 @@ class WeatherTab extends Component {
         const year = dateInfo.getFullYear();
         const month = dateInfo.getMonth()+1;
         const day = dateInfo.getDate();
-        const hour = dateInfo.getHours();
-        const minutes = dateInfo.getMinutes();
-        console.log(day);
+
+
+        setTimeout(() => {
+            this.setState({wOpacity:1})
+        }, 5000);
+
         if (this.state.loading) {
             return <p>Loading</p>;
         } else {
             return (
-                <div id='weatherTab'>
+                <div id='weatherTab' style={{opacity:this.state.wOpacity}}>
                     <h4>Today's Weather</h4>
                     <div id='weatherInfo'>
                         <p>{year} / {month} / {day} ·</p>
                         <img src={imgSrc}/>
-                        <p>· {(this.state.temp-273.15).toFixed(1)}℃</p>
+                        <p>· {(this.state.temp-272.85).toFixed(1)}℃</p>
                     </div>
                 </div>
             );

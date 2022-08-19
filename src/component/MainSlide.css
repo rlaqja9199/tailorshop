@@ -8,7 +8,9 @@
 }
 #mainSlide {
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    overflow: hidden;
+    transition: 2s;
 }
 #mainSlide img{
     filter: brightness(70%);

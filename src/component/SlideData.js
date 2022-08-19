@@ -18,5 +18,15 @@ export const slideList = [
         id: 4,
         linkImg: '/images/main4.jpg',
         body: '',
-    }
+    },
+    {
+        id: 5,
+        linkImg: '/images/main5.jpg',
+        body: '',
+    },
+    {
+        id: 6,
+        linkImg: '/images/main6.jpg',
+        body: '',
+    },
 ]

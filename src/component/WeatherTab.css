@@ -2,11 +2,12 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    z-index: 100;
+    z-index: 9;
     color: #fff;
     display: flex;
     flex-direction: column;
     margin-left: 18px;
+    transition: 2s;
 }
 #weatherTab h4{
     font-size: 30px;

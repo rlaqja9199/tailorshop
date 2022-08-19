@@ -4,6 +4,11 @@ import './Header.css'
 const Header = () => {
   const [menuOn, setMenuOn] = useState('-100vh');
   const [closeIconOpacity, setCloseIconOpacity] = useState(0);
+  const [headerOpacity, setHeaderOpacity] = useState(0);
+
+  setTimeout(() => {
+    setHeaderOpacity(1);
+  }, 5000);
 
   const menuOpen = ()=>{
     if(menuOn == 0){
@@ -17,7 +22,7 @@ const Header = () => {
   }
   
   return (
-    <div id='header'>
+    <div id='header' style={{opacity:headerOpacity}}>
         <h1><a href="/">BARON</a></h1>
         <div id='menu'>
           <div id='burgerTab'  onClick={menuOpen}>

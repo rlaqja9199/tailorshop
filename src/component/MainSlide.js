@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import { slideList } from "./SlideData";
 import "slick-carousel/slick/slick.css"; 
@@ -7,6 +7,11 @@ import "./MainSlide.css"
 
 
 const MainSlide = () => {
+    const [slideOpacity, setSlideOpacity] = useState(0);
+
+    setTimeout(() => {
+      setSlideOpacity(1);
+    }, 4500);
 
     const settings = {
         dots: false,
@@ -21,7 +26,7 @@ const MainSlide = () => {
         pauseOnHover: false
     };
   return (
-    <div id="mainSlide">
+    <div id="mainSlide" style={{opacity:slideOpacity}}>
         <Slider {...settings}>
             {slideList.map((item)=>(
                 <div>
