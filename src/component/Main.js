@@ -28,18 +28,6 @@ const Main = () => {
 
   }, 1000);
 
-  useEffect(()=>{
-    //page4텍스트 타이핑 효과
-    const p4TextInterval = setInterval(() => {
-      setPage4Text(page4Text + p4Text[p4TextCount]);
-      setP4TextCount(p4TextCount+1);
-    }, 1000);
-    if(p4TextCount === p4Text.length+1){
-      clearInterval(p4TextInterval);
-      setPage4Text('');
-    }
-    return ()=> clearInterval(p4TextInterval);
-  })
   
   useEffect(()=>{
     window.addEventListener('scroll',(e)=>{
@@ -49,8 +37,9 @@ const Main = () => {
       console.log('스크롤Y'+scrollY);
       console.log(innerHeight);
 
-
-      if(scrollY>(innerHeight*6)){
+      if(scrollY>(innerHeight*8)){
+        setPage4Opacity(0);
+      }else if(scrollY>(innerHeight*6)){
         setPage4Opacity(1);
         setPage3Opacity(0);
       }else if(scrollY>(innerHeight*4)){
@@ -84,11 +73,22 @@ const Main = () => {
       </div>
       <div id='page3' style={{opacity: page3Opacity}}>
         <img src='/images/page22.jpg' alt='' />
-        <p>당신에게<br/> 꼭 맞는 비스포크 </p>
+        <p>당신에게<br/>   당신만의</p>
       </div>
       <div id='page4' style={{opacity: page4Opacity}}>
         <img src='/images/page23.jpg' alt='' />
-        <p>{page4Text}</p>
+        <p>BARON</p>
+      </div>
+      <div className='categoryPage'>
+        <div className='leftMainPage'>
+          <img src='/images/bespoke1.jpg' alt='' />
+        </div>
+        <div className='rightMainPage'>
+          <h3>BESPOKE</h3>
+          <p>특별한 사람을 위하여 <br/> 특별히 만들어진</p>
+          <span>Own your fit</span>
+          <div className='detailView'>DETAIL VIEW</div>
+        </div>
       </div>
     </div>
   )
