@@ -25,21 +25,17 @@
     color: #eee;
     transition: 2s;
 }
-#emptyBox {
-    width: 100%;
-    height: 1000vh;
-    background: tomato;
-}
 
 
 /* 페이지2 */
 #page2 {
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     position: fixed;
     overflow: hidden;
-    top: 0;
+    top: 50%;
     left: 0;
+    transform: translateY(-50%);
     z-index: 2;
     transition: 2s;
 }
@@ -62,17 +58,18 @@
 /* 페이지3 */
 #page3 {
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     position: fixed;
     overflow: hidden;
-    top: 0;
+    top: 50%;
     left: 0;
+    transform: translateY(-50%);
     z-index: 2;
     transition: 2s;
 }
 #page3 img{
     width: 100vw;
-    filter: grayscale(60%);
+    filter: grayscale(80%);
 }
 #page3 p {
     font-size: 42px;
@@ -89,17 +86,18 @@
 /* 페이지4 */
 #page4 {
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     position: fixed;
     overflow: hidden;
-    top: 0;
+    top: 50%;
     left: 0;
+    transform: translateY(-50%);
     z-index: 2;
     transition: 2s;
 }
 #page4 img{
     width: 100vw;
-    filter: grayscale(40%);
+    filter: grayscale(50%);
 }
 #page4 p {
     font-size: 60px;
@@ -117,10 +115,14 @@
 .categoryPage {
     width: 100%;
     height: 100vh;
-    position: relative;
+    position: fixed;
     display: flex;
     overflow: hidden;
     text-align: start;
+    left: 0;
+    top: 0;
+    transition: 2s;
+    z-index: 3;
 }
 
 .leftMainPage {
@@ -129,9 +131,12 @@
     position: absolute;
     left: 0;
     top: 0;
+    transition: 1s;
+    overflow: hidden;
 }
 .leftMainPage img{
     width: 100%;
+    transition: 1s;
 }
 
 
@@ -144,16 +149,20 @@
     padding-left: 120px;
     right: 0;
     bottom: 0;
+    transition: 1s;
+    cursor: default;
 }
 .rightMainPage h3{
     font-size: 60px;
     margin-top: 60px;
     font-weight: 600;
+    transition: 1s;
 }
 .rightMainPage p{
     font-size: 40px;
     margin-top: 160px;
     padding-left: 36px;
+    transition: 1s;
 }
 .rightMainPage span {
     font-size: 36px;
@@ -161,6 +170,7 @@
     position: absolute;
     right: 5%;
     bottom: 20%;
+    transition: 1s;
 }
 .rightMainPage .detailView {
     width: 200px;
@@ -174,4 +184,54 @@
     bottom: 10%;
     cursor: pointer;
     z-index: 2;
+    transition: 1s;
+}
+
+
+/* 카테고리페이지 백그라운드컬러 */
+.cPageL1, .cPageR1{
+    background-color: #204030;
+}
+
+.cPageL2, .cPageR2{
+    background-color:   #720d0d;
+}
+
+.cPageL3, .cPageR3{
+    background-color: #AA9A8A;
+}
+
+
+
+/* 지도페이지 */
+#directionsPage {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #F9F5EC;
+    transition: 2s;
+}
+#directionsPage p {
+    color: #000000;
+    font-size: 48px;
+    margin-top: 40px;
+    font-weight: bold;
+}
+#shopImg{
+    position: absolute;
+    width: 40%;
+    left: 0;
+    top: -25%;
+    overflow: hidden;
+}
+#directionsPage #shopImgDetail {
+    width: 100%;
+    filter: brightness(80%) grayscale(50%);
+}
+#map {
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }

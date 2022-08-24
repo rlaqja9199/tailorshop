@@ -13,7 +13,8 @@
     transition: 2s;
 }
 #mainSlide img{
-    filter: brightness(70%);
+    filter: brightness(70%) grayscale(30%);
+    
     width: 100%;
     height: 100%;
 }

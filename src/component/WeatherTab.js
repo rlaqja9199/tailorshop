@@ -68,7 +68,7 @@ class WeatherTab extends Component {
                     <h4>Today's Weather</h4>
                     <div id='weatherInfo'>
                         <p>{year} / {month} / {day} ·</p>
-                        <img src={imgSrc}/>
+                        <img src={imgSrc} alt='' />
                         <p>· {(this.state.temp-272.85).toFixed(1)}℃</p>
                     </div>
                 </div>
