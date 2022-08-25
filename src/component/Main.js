@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Footer from '../include/Footer'
 import './Main.css'
 import MainSlide from './MainSlide'
 import Map from './Map'
@@ -19,8 +20,8 @@ const Main = () => {
   const [cPage2Opacity, setCPage2Opacity] = useState(0);
   const [cPage3Height, setCPage3Height] = useState(-100);
   const [cPage3Opacity, setCPage3Opacity] = useState(0);
-  const [cPage4Height, setCPage4Height] = useState(-100);
   const [directionsPage, setDirectionsPage] = useState(0);
+  const [footerOn, setFooterOn] = useState("-20vh");
 
 
   //페이지 로딩
@@ -44,12 +45,13 @@ const Main = () => {
         setCPage3Height(100);
         setTimeout(() => {
           setDirectionsPage(1);
-          
+          setFooterOn(0);
         }, 1000);
       }else if(scrollY>(innerHeight*12)){
         setCPage2Height(100);
         setCPage3Height(0);
         setDirectionsPage(0);
+        setFooterOn("-20vh");
         setTimeout(() => {
           setCPage3Opacity(1);
         }, 1000);
@@ -97,6 +99,13 @@ const Main = () => {
       }
       else{
         setPage1Opacity(0);
+        setPage2Opacity(0);
+        setPage3Opacity(0);
+        setPage4Opacity(0);
+        setCPage1Opacity(0);
+        setCPage2Opacity(0);
+        setCPage3Opacity(0);
+        setDirectionsPage(0);
       }
     })
   },[])
@@ -117,7 +126,7 @@ const Main = () => {
       </div>
       <div id='page3' style={{opacity: page3Opacity}}>
         <img src='/images/page22.jpg' alt='' />
-        <p>당신에게<br/>   당신만의</p>
+        <p>오직 당신에게<br/>꼭 맞는 당신만의</p>
       </div>
       <div id='page4' style={{opacity: page4Opacity}}>
         <img src='/images/main6.jpg' alt='' />
@@ -165,9 +174,22 @@ const Main = () => {
           </div>
           <Map />
         </div>
-        <div className='directionRightPage'>
-          <p>Directions</p>
+        <div className='directionRightPage' style={{opacity:directionsPage}}>
+          <h2>Directions</h2>
+          <div id='textBox'>
+            <p>Address.<span><br/>전라남도 순천시 왕지5길 54 1층<br/>전라남도 순천시 왕지동 855-10 1층</span></p>
+            <p>TEL. <span>061-722-7983</span><br/>M. <span>010-1234-5678</span></p>
+            <p>Open. <span>11:00</span><br/>Close. <span>20:00</span></p>
+            <p>Closed. <span>화요일</span></p>
+            <p>
+              Car. <span>순천역에서 5.7km, 15분 소요</span><br/>
+              Bus. <span>순천역에서 56번버스 탑승, 범암에서 하차 후 도보 1분 </span>
+            </p>
+          </div>
         </div>
+      </div>
+      <div id='footer' style={{bottom: footerOn}}>
+        <Footer />
       </div>
     </div>
   )

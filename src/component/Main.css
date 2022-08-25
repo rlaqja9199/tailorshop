@@ -102,6 +102,7 @@
 #page4 p {
     font-size: 60px;
     text-decoration: underline;
+    text-decoration-color: #dda973;
     color: #eee;
     position: absolute;
     right: 20%;
@@ -206,18 +207,18 @@
 /* 지도페이지 */
 #directionsPage {
     position: fixed;
+    display: flex;
     width: 100%;
     height: 100vh;
     top: 0;
     left: 0;
     background-color: #F9F5EC;
-    transition: 2s;
+    transition: 1s;
+    z-index: 3;
 }
-#directionsPage p {
-    color: #000000;
-    font-size: 48px;
-    margin-top: 40px;
-    font-weight: bold;
+.directionLeftPage {
+    width: 50%;
+    height: 100vh;
 }
 #shopImg{
     position: absolute;
@@ -234,4 +235,64 @@
     position: absolute;
     left: 0;
     bottom: 0;
+}
+
+
+
+.directionRightPage {
+    width: 50%;
+    height: 100vh;
+    text-align: start;
+}
+
+#textBox{
+    margin-top: 50px;
+}
+.directionRightPage h2 {
+    display: inline-block;
+    color: #000000;
+    font-size: 48px;
+    margin-top: 40px;
+    font-weight: bold;
+    border-bottom: 3px solid #dda973;
+}
+.directionRightPage p {
+    color: #000000;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 14px;
+}
+.directionRightPage span {
+    font-weight: 500;
+    font-size: 24px;
+    font-family: sans-serif;
+}
+
+
+
+#footer {
+    position: fixed;
+    display: flex;
+    width: 60%;
+    height: 20vh;
+    right: 0;
+    background-color: #232527;
+    z-index: 4;
+    transition: 1s;
+}
+#leftFooter {
+    width: 60%;
+    color: #e5e7eb;
+    text-align: start;
+    margin-top: 30px;
+    margin-left: 10%;
+}
+#rightFooter {
+    display: flex;
+    width: 40%;
+    color: #fff;
+    margin-top: 30px;
+}
+#rightFooter p{
+    padding: 6px;
 }
