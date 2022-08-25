@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tailorshop/static/css/main.66207094.css",
-    "main.js": "/tailorshop/static/js/main.344d2839.js",
+    "main.js": "/tailorshop/static/js/main.d641bef5.js",
     "static/js/787.c034fd15.chunk.js": "/tailorshop/static/js/787.c034fd15.chunk.js",
     "static/media/slick.svg": "/tailorshop/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/tailorshop/static/media/slick.a4e97f5a2a64f0ab1323.eot",
@@ -9,11 +9,11 @@
     "static/media/slick.woff": "/tailorshop/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/tailorshop/index.html",
     "main.66207094.css.map": "/tailorshop/static/css/main.66207094.css.map",
-    "main.344d2839.js.map": "/tailorshop/static/js/main.344d2839.js.map",
+    "main.d641bef5.js.map": "/tailorshop/static/js/main.d641bef5.js.map",
     "787.c034fd15.chunk.js.map": "/tailorshop/static/js/787.c034fd15.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.66207094.css",
-    "static/js/main.344d2839.js"
+    "static/js/main.d641bef5.js"
   ]
 }
