@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import './Header.css'
 
 const Header = () => {
@@ -48,7 +49,7 @@ const Header = () => {
                     <div></div>
                   </div>
                 </li>
-                <li><span>About Us</span></li>
+                <li><span><Link to="/aboutus">AboutUs</Link></span></li>
                 <li><span>Promotion</span></li>
                 <li><span>Directions</span></li>
                 <li><span>Login</span></li>

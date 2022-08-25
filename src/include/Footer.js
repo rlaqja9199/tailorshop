@@ -9,7 +9,7 @@ const Footer = () => {
             <p>COMPANY : 바론테일러</p>
             <p>MASTER : 김바론</p>
             <p>ADDRESS : 전라남도 순천시 왕지5길 54 1층</p>
-            <p>M. 010 -5575-1746</p>
+            <p>M. 010-1234-5678</p>
             <p>BUSINESS LICENSE : 123-45-67890</p>
             <p>2020 ⓒ Copyright BARONTAILOR. Design by BEOM.</p>
         </div>
