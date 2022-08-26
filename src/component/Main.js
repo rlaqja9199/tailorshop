@@ -21,7 +21,9 @@ const Main = () => {
   const [cPage3Height, setCPage3Height] = useState(-100);
   const [cPage3Opacity, setCPage3Opacity] = useState(0);
   const [directionsPage, setDirectionsPage] = useState(0);
+  const [directionsPageZIndex, setDirectionsPageZIndex] = useState(0);
   const [footerOn, setFooterOn] = useState("-20vh");
+  const [footerZIndex, setFooterZIndex] = useState(0);
 
 
   //페이지 로딩
@@ -34,7 +36,7 @@ const Main = () => {
 
   
   useEffect(()=>{
-    window.addEventListener('scroll',(e)=>{
+    window.addEventListener('scroll',()=>{
       const scrollY = window.scrollY;
       const innerHeight = window.innerHeight;
 
@@ -42,12 +44,16 @@ const Main = () => {
       console.log(innerHeight);
 
       if(scrollY>(innerHeight*14)){
+        setDirectionsPageZIndex(3);
+        setFooterZIndex(4);
         setCPage3Height(100);
         setTimeout(() => {
           setDirectionsPage(1);
           setFooterOn(0);
         }, 1000);
       }else if(scrollY>(innerHeight*12)){
+        setFooterZIndex(0);
+        setDirectionsPageZIndex(0);
         setCPage2Height(100);
         setCPage3Height(0);
         setDirectionsPage(0);
@@ -167,7 +173,7 @@ const Main = () => {
           <div className='detailView' style={{opacity:cPage3Opacity}}>DETAIL VIEW</div>
         </div>
       </div>
-      <div id='directionsPage' style={{opacity:directionsPage}}>
+      <div id='directionsPage' style={{opacity:directionsPage, zIndex:directionsPageZIndex}}>
         <div className='directionLeftPage'>
           <div id='shopImg'>
             <img src="/images/shopImg.jpg" alt='' id='shopImgDetail' />
@@ -188,7 +194,7 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div id='footer' style={{bottom: footerOn}}>
+      <div id='footer' style={{bottom: footerOn, zIndex: footerZIndex}}>
         <Footer />
       </div>
     </div>

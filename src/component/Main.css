@@ -214,7 +214,6 @@
     left: 0;
     background-color: #F9F5EC;
     transition: 1s;
-    z-index: 3;
 }
 .directionLeftPage {
     width: 50%;

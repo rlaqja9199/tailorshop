@@ -129,11 +129,14 @@
     text-align: center;
     color: #fff;
     font-size: 36px;
-    cursor: pointer;
     display: flex;
     padding-left: 15%;
     position: relative;
-
+    
+}
+#menuWrap ul li span {
+    display: inline-block;
+    cursor: pointer;
 }
 #menuWrap ul li span::after {
     content: '';
@@ -151,7 +154,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    cursor: initial;
+    cursor: default;
 }
 #closeIconWrap {
     position: absolute;

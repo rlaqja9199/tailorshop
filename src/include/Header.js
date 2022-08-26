@@ -49,10 +49,12 @@ const Header = () => {
                     <div></div>
                   </div>
                 </li>
-                <li><span><Link to="/aboutus">AboutUs</Link></span></li>
-                <li><span>Promotion</span></li>
-                <li><span>Directions</span></li>
-                <li><span>Login</span></li>
+                <li><span><a href="/">Home</a></span></li>
+                <li><span onClick={menuOpen}><Link to="/aboutus">AboutUs</Link></span></li>
+                <li><span onClick={menuOpen}>Promotion</span></li>
+                <li><span onClick={menuOpen}>Review</span></li>
+                <li><span onClick={menuOpen}>Directions</span></li>
+                <li><span onClick={menuOpen}>Login</span></li>
               </ul>
             </div>
           </div>

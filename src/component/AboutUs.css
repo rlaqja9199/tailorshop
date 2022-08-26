@@ -1,0 +1,178 @@
+@keyframes scrollDown {
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(15px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+@keyframes nameOpacity {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+#aboutUsBackground1 {
+    width: 100%;
+    height: 45%;
+    background-color: black;
+    background-image: url('../../public/images/aboutUsBg.jpg');
+    background-repeat: no-repeat;
+    background-position: center -500px;
+    background-attachment: fixed;
+    background-size: cover;
+    background-blend-mode: luminosity;
+    position: absolute;
+    top: 60px;
+    left: 0;
+}
+#aboutUsText {
+    width: 100%;
+    padding-top: 27%;
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    line-height: 1.6;
+    position: relative;
+}
+#aboutUsText .scrollDown {
+    position: absolute;
+    font-size: 12px;
+    top: 90vh;
+    animation: scrollDown infinite 3s;
+    transition: 200ms;
+}
+.scrollDown::before{
+    content: '';
+    display: block;
+    width: 1px;
+    height: 10px;
+    background-color: #eee;
+    position: absolute;
+    bottom: -20px;
+    left: calc(50% + 3.5px);
+    transform: rotateZ(45deg);
+}
+.scrollDown::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 10px;
+    background-color: #eee;
+    position: absolute;
+    bottom: -20px;
+    left: calc(50% - 3.5px);
+    transform: rotateZ(-45deg);
+}
+#aboutUsText::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 1px;
+    height: 200px;
+    background-color: #999;
+    bottom: -20%;
+}
+#aboutUsText h2{
+    font-size: 80px;
+    margin-bottom: 140px;
+    font-weight: bold;
+    opacity: 0;
+    animation: nameOpacity 1s 500ms forwards;
+}
+#textWrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 2s;
+}
+#textWrap h3 {
+    font-size: 52px;
+    margin-bottom: 60px;
+}
+#textWrap h4 {
+    font-size: 36px;
+    margin-bottom: 140px;
+    font-family: sans-serif;
+}
+#textWrap h4 .eng {
+    font-family: 'Libre Caslon Display';
+    font-weight: normal;
+}
+#textWrap h4 span {
+    font-weight: bold;
+}
+#textWrap p {
+    width: 35%;
+    font-size: 16px;
+    font-family: sans-serif;
+    margin-bottom: 40px;
+}
+
+
+#aboutUsList {
+    width: 100%;
+    margin-top: 450px;
+    color: #eee;
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#aboutUsList li{
+    display: inline-block;
+    margin-bottom: 48px;
+    border-bottom: 1px solid #eee;
+    border-width: 100%;
+}
+
+#aboutUsBackground2 {
+    width: 100%;
+    height: 45%;
+    background-color: black;
+    background-image: url('../../public/images/aboutUsBg2.jpg');
+    background-repeat: no-repeat;
+    background-position: center -300px;
+    background-attachment: fixed;
+    background-size: cover;
+    background-blend-mode: luminosity;
+    position: absolute;
+    bottom: -206vh;
+    left: 0;
+}
+
+#aboutUsText2 {
+    width: 100%;
+    padding-top: 45%;
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    line-height: 1.6;
+    position: relative;
+    font-family: sans-serif;
+}
+#aboutUsText2 h4{
+    font-size: 36px;
+    margin-bottom: 100px;
+}
+#aboutUsText2 h4 .eng{
+    font-family: 'Libre Caslon Display';
+}
+#aboutUsText2 p {
+    width: 35%;
+    font-size: 16px;
+    font-family: sans-serif;
+    margin-bottom: 40px;
+}

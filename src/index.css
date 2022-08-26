@@ -24,6 +24,7 @@ table {
 li { list-style: none;}
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
+    cursor: default;
 }
 address {
     font-style: normal;
@@ -43,4 +44,7 @@ body{
 #root {
   width: 100%;
   height: 100%;
+}
+p, span{
+  cursor: default;
 }

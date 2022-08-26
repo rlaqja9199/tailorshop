@@ -1,0 +1,20 @@
+#aboutUsSlide {
+    color: #eee;
+    width: 100%;
+    overflow: hidden;
+}
+.slick-active {
+    animation: none;
+}
+
+.slideImg {
+    height: 300px;
+    overflow: hidden;
+    margin: 140px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slideImg img {
+    width: 80%;
+}
