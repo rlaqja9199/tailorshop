@@ -12,6 +12,9 @@
     overflow: hidden;
     transition: 2s;
 }
+#mainSlide div{
+    width: 100%;
+}
 #mainSlide img{
     filter: brightness(70%) grayscale(30%);
     

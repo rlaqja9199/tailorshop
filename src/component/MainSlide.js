@@ -8,13 +8,12 @@ import "./MainSlide.css"
 
 const MainSlide = () => {
     const [slideOpacity, setSlideOpacity] = useState(0);
-    // const [slideCurrentScale, setSlideCurrentScale] = useState(1.04);
 
     setTimeout(() => {
       setSlideOpacity(1);
     }, 4500);
 
-    const settings = {
+    const settings1 = {
         dots: false,
         fade: true,
         arrows: false,
@@ -28,10 +27,10 @@ const MainSlide = () => {
     };
   return (
     <div id="mainSlide" style={{opacity:slideOpacity}}>
-        <Slider {...settings}>
+        <Slider {...settings1}>
             {slideList.map((item)=>(
                 <div className="imgDiv">
-                    <img src={item.linkImg} alt='' />
+                    <img src={item.linkImg} alt=''/>
                 </div>
             ))}
         </Slider>

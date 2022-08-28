@@ -1,9 +1,9 @@
 #aboutUsSlide {
     color: #eee;
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
-.slick-active {
+.slider2 .slick-current {
     animation: none;
 }
 
@@ -11,10 +11,18 @@
     height: 300px;
     overflow: hidden;
     margin: 140px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0 24px;
+    outline: none;
 }
 .slideImg img {
-    width: 80%;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+}
+#slideDetail {
+    position: absolute;
+    width: 70vw;
+}
+#slideDetail img{
+    width: 100%;
 }
