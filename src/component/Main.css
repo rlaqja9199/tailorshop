@@ -269,7 +269,7 @@
 
 
 
-#footer {
+.footer {
     position: fixed;
     display: flex;
     width: 60%;

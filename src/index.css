@@ -3,7 +3,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont,'Libre Caslon Display', 'Yeon Sung', 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont,'Libre Caslon Display',sans-serif, 'Yeon Sung', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif, cursive;
   -webkit-font-smoothing: antialiased;
@@ -15,7 +15,7 @@ code {
     monospace;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box;}
+* { margin: 0; padding: 0; box-sizing: border-box; outline: none;}
 a {text-decoration: none; color:inherit; }
 img { vertical-align: top; }
 table {

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Footer from '../include/Footer'
 import './Main.css'
 import MainSlide from './MainSlide'
 import Map from './Map'
 import WeatherTab from './WeatherTab'
+import { throttle } from 'lodash';
 
 const Main = () => {
   const [textBlur, setTextBlur] = useState('2px 2px 20px #fff');
@@ -34,9 +35,10 @@ const Main = () => {
 
   }, 1000);
 
-  
-  useEffect(()=>{
-    window.addEventListener('scroll',()=>{
+
+
+  const throttleScroll = useMemo(()=>
+    throttle(()=>{
       const scrollY = window.scrollY;
       const innerHeight = window.innerHeight;
 
@@ -113,7 +115,11 @@ const Main = () => {
         setCPage3Opacity(0);
         setDirectionsPage(0);
       }
-    })
+    },500)
+  )
+  
+  useEffect(()=>{
+    window.addEventListener('scroll',throttleScroll);
   },[])
   return (
     <div id='main'>
@@ -194,7 +200,7 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div id='footer' style={{bottom: footerOn, zIndex: footerZIndex}}>
+      <div className='footer' style={{bottom: footerOn, zIndex: footerZIndex}}>
         <Footer />
       </div>
     </div>

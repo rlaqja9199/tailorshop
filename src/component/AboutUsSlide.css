@@ -1,7 +1,6 @@
 #aboutUsSlide {
     color: #eee;
     width: 100%;
-    /* overflow: hidden; */
 }
 .slider2 .slick-current {
     animation: none;
@@ -20,9 +19,43 @@
     outline: none;
 }
 #slideDetail {
-    position: absolute;
-    width: 70vw;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
-#slideDetail img{
+#detailBg{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+#aboutSlideDetail {
+    position: fixed;
+    overflow: hidden;
+    width: 70vw;
+    height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #eee;
+    z-index: 20;
+    cursor: pointer;
+}
+#aboutSlideDetail img {
     width: 100%;
+}
+#detail6 {
+    position: relative;
+    top: -30%;
+}
+#detail7, #detail9 {
+    position: relative;
+    top: -20%;
 }
