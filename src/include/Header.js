@@ -9,6 +9,7 @@ const Header = () => {
   const [headerOpacity, setHeaderOpacity] = useState(0);
   const [menuImgOpacity, setMenuImgOpacity] = useState(1);
   const [loginLeft, setLoginLeft] = useState(0);
+  const [loginLeftImg, setLoginLeftImg] = useState(-200);
   const [loginRight, setLoginRight] = useState(-50);
   const [loginTextOn, setLoginTextOn] = useState(0);
   const [passwordTextOn, setPasswordTextOn] = useState(0);
@@ -28,10 +29,12 @@ const Header = () => {
       setLoginRight(-50);
       setMenuImgOpacity(1);
       setLoginBoxOpacity(0);
+      setLoginLeftImg(-200)
       setTimeout(() => {
         setLogoZ(100);
       }, 800);
     }else{
+      setLoginLeftImg(0);
       setMenuOn(0);
       setCloseIconOpacity(1);
       setLogoZ(0);
@@ -114,8 +117,8 @@ const Header = () => {
                 <li>
                   <span onClick={loginOpen}>Login</span>
                   <div id='loginPage'>
-                    <div id='loginLeft' style={{opacity:loginLeft}}>
-                      <img src="/images/loginLeft.jpg" alt='' />
+                    <div id='loginLeft' style={{opacity:loginLeft, transform:`translateX(${loginLeftImg}%)` }}>
+                      <img src="/images/loginLeft.jpg" alt='' style={{transform:`translateX(${loginLeftImg}%)`}} />
                     </div>
                     <div id='loginRight' style={{right:`${loginRight}%`}}>
                       <ul id='loginBox' style={{opacity:loginBoxOpacity}}>

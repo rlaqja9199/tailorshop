@@ -212,7 +212,7 @@
     transition: 1s;
 }
 #loginLeft img{
-    width: 100%;
+    width: 200%;
 }
 #loginRight {
     position: absolute;

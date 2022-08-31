@@ -1,0 +1,68 @@
+#signUp {
+    width: 100%;
+    height: 100vh;
+    color: #eee;
+    padding-top: 5%;
+}
+#signUp h3 {
+    font-size: 80px;
+    text-shadow: 1px 1px 3px #808685;
+}
+#signUp ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#signUp li {
+    margin: 14px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#signUp input{
+    width: 500px;
+    height: 30px;
+    border: none;
+    border-radius: 4px;
+    padding: 14px;
+    background-color: inherit;
+    color: #eee;
+}
+#signUp .inputLine {
+    width: 100%;
+    height: 1px;
+    background-color: #eee;
+    margin-top: 8px;
+}
+#signUp #joinBtn {
+    width: 200px;
+    height: 40px;
+    border: none;
+    background-color: #2e5fd1;
+    border-radius: 8px;
+    color: #eee;
+    cursor: pointer;
+}
+#signUp #signUpBox p{
+    transition: 0.5s;
+}
+#signUp li:nth-child(7){
+    width: 500px;
+}
+#questionWrap {
+    width: 100%;
+    display: flex;
+}
+#questionWrap select{
+    width: 35%;
+    text-align: center;
+    border: none;
+    background-color: inherit;
+    color: #eee;
+}
+#questionWrap option {
+    color: #000;
+}
+#questionWrap input{
+    width: 65%;
+}
