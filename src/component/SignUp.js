@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './SignUp.css'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -20,6 +20,7 @@ const SignUp = () => {
     const [eMailLineColor, setEMailLineColor] = useState('#eee');
     const [mobileNumberLineColor, setMobileNumberLineColor] = useState('#eee');
     const [questionLineColor, setQuestionLineColor] = useState('#eee');
+    const [joinCompleteMsg, setJoinCompleteMsg] = useState('none');
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -143,19 +144,19 @@ const SignUp = () => {
 
         //유효성검사 - 글자수 제한, 유의미한 데이터인지 파악 등
         //1. id의 길이(4-10자 입력)
-        if(formData.username.length<4 || formData.username.length>=11) alert("ID가 양식에 적합하지 않습니다.");
+        if(formData.username.length<4 || formData.username.length>=13) alert("ID는 4~12글자로 생성가능합니다.");
         //2. 비밀번호의 최소길이 4글자 이상
-        else if(formData.password.length<4 || formData.password.length<4) alert("비밀번호는 4자 이상 입력해주세요.");
+        else if(formData.password.length<4 || formData.password.length>20) alert("비밀번호는 4~20글자로 생성가능합니다.");
         //3. 비밀번호와 비밀번호확인이 일치하는지
         else if(formData.password !== formData.passwordCheck) alert("비밀번호가 일치하지 않습니다.");
         //4. 전화번호
-        else if(formData.mobileNumber.length<10) alert("전화번호 양식에 적합하지 않습니다.");
+        else if(formData.mobileNumber.length<10 || formData.mobileNumber.length >12) alert("전화번호 양식에 적합하지 않습니다.");
         //중복아이디 체크
         // else {
         //     if (formData.c_id===)
         // }
         //input에 값이 있는지 체크하고
-        if(formData.username !== "" && formData.password !== "" && formData.passwordCheck !== "" && formData.eMail !== "" 
+        else if(formData.username !== "" && formData.password !== "" && formData.passwordCheck !== "" && formData.eMail !== "" 
         && formData.mobileNumber !== "" && formData.question !=="" && formData.answer !==""){
             console.log("값이 있어요")
             insertJoin();
@@ -169,7 +170,9 @@ const SignUp = () => {
         // axios.post(`${API_URL}/register`,formData)
         .then(res=>{
             console.log(res);
-            navigate('/');              
+            setTimeout(() => {
+                setJoinCompleteMsg('block')
+            }, 500);
         })
         .catch(e=>{
             console.log(e);
@@ -178,8 +181,8 @@ const SignUp = () => {
 
 
   return (
-    <form id='signUpForm' onSubmit={onSubmit}>
-        <div id='signUp'>
+    <div id='signUp'>
+        <form id='signUpForm' onSubmit={onSubmit}>
             <ul id='signUpBox'>
                 <li>
                     <h3>SIGN UP</h3>
@@ -227,8 +230,20 @@ const SignUp = () => {
                     <button id='joinBtn' type='submit'>JOIN BARON</button>
                 </li>
             </ul>
+        </form>
+        <div id='joinComplete' style={{display:joinCompleteMsg}}>
+            <div className='grayBg'></div>
+            <div id='msgBox'>
+                <h3>회원가입 완료</h3>
+                <p id='usernameCall'><span>{formData.username}</span>님</p>
+                <p id='completeMsg'>
+                    BARON의 회원이 되신것을<br/>
+                    진심으로 축하드립니다.
+                </p>
+                <button><a href='/'>확인</a></button>
+            </div>
         </div>
-    </form>
+    </div>
   )
 }
 

@@ -56,7 +56,7 @@ const AboutUs = () => {
   }
   return (
     <div id='aboutUs' className={modalOpen}>
-      <div id='aboutUsBackground1'></div>
+      <div id='aboutUsBackground1'>BARON</div>
       <div id='aboutUsText'>
         <h2>About Us</h2>
         <p className='scrollDown' style={{opacity:scrollDownOpacity}}>SCROLL DOWN</p>

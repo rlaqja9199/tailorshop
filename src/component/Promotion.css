@@ -1,0 +1,64 @@
+#promotionImg {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    height: 450px;
+    /* background-image: url('../../public/images/promotionImg1.jpg'); */
+    background-image: url('../../public/images/promotionImg2.jpg');
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center -200px;
+    background-attachment: fixed;
+    background-size: cover;
+    /* background-blend-mode: luminosity; */
+    filter: grayscale(0%);
+    color: #eee;
+    /* color: #111; */
+    /* text-shadow: 2px 2px 3px #eee; */
+    font-size: 100px;
+    line-height: 400px;
+}
+.slider3 .slick-active {
+    animation: none;
+}
+#promotionPost{
+    position: absolute;
+    width: 100%;
+    bottom: -50%;
+}
+#promotionPost h3{
+    color: #eee;
+    font-size: 80px;
+    font-weight: bold;
+
+}
+#promotionPost .slideImg{
+    position: relative;
+    width: 33%;
+    height: 430px;
+    color: #eee;
+    overflow: inherit;
+}
+#promotionPost .slideImg img{
+    /* position: relative; */
+    width: 110%;
+    top: -15%;
+}
+#promotionPost .slideImg .postTitle{
+    position: absolute;
+    width: 60%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-shadow: 1px 1px 3px #111;
+    font-size: 32px;
+}
+#promotionPost .slideImg .postBody{
+    margin: 20px 0;
+}
+#promotionPost .slideImg .postPeriod{
+    position: absolute;
+    left: 50%;
+    bottom: -130px;
+    transform: translateX(-50%);
+}
