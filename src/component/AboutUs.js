@@ -86,7 +86,7 @@ const AboutUs = () => {
       </div>
       <ul id='aboutUsList'>
         <li>
-          <p onClick={listOn}>Competitiveness</p>
+          <p className='listName' onClick={listOn}>Competitiveness</p>
           <div className='aboutUsListScreen competitiveness' style={{display:competitiveness}}>
             <div className='greyBg' ></div>
             <div className='closeBtn' onClick={listOff}>Competitiveness</div>
@@ -138,7 +138,7 @@ const AboutUs = () => {
           </div>
         </li>
         <li>
-          <p onClick={listOn}>Bespoke</p>
+          <p className='listName' onClick={listOn}>Bespoke</p>
           <div className='aboutUsListScreen bespoke' style={{display:bespoke}}>
             <div className='greyBg' ></div>
             <div className='closeBtn' onClick={listOff}>Bespoke</div>
@@ -179,7 +179,7 @@ const AboutUs = () => {
           </div>
         </li>
         <li>
-          <p onClick={listOn}>Wedding</p>
+          <p className='listName' onClick={listOn}>Wedding</p>
           <div className='aboutUsListScreen wedding' style={{display:wedding}}>
             <div className='greyBg' ></div>
             <div className='closeBtn' onClick={listOff}>Wedding</div>

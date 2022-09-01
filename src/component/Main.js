@@ -186,7 +186,7 @@ const Main = () => {
         </div>
         <div className='rightMainPage cPageR3' style={{bottom:`${cPage3Height}vh`}}>
           <h3 style={{opacity:cPage3Opacity}}>WEDDING</h3>
-          <p style={{opacity:cPage3Opacity}}>"작은 디테일의 차이가 <br/>명품을 만듭니다"</p>
+          <p style={{opacity:cPage3Opacity}}>"한번뿐인 그 날을 위해<br/>하나뿐인 당신에게"</p>
           <span style={{opacity:cPage3Opacity}}>Own your fit</span>
           <div className='detailView' style={{opacity:cPage3Opacity}}>DETAIL VIEW</div>
         </div>

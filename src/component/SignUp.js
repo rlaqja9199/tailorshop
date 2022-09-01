@@ -1,5 +1,11 @@
 import React, { useState } from 'react'
 import './SignUp.css'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+
+
+
 
 const SignUp = () => {
     const [userNameTextOpacity, setUserNameTextOpacity] = useState(0);
@@ -20,7 +26,10 @@ const SignUp = () => {
         passwordCheck: "",
         eMail: "",
         mobileNumber: "",
+        question: "1",
+        answer: "",
     })
+    const navigate = useNavigate();
 
 
 
@@ -72,8 +81,12 @@ const SignUp = () => {
         }
     }
 
-    //텍스트타이핑 오파시티
-    const textTypeOpacity = (e)=>{
+    // //텍스트타이핑 오파시티
+    // const textTypeOpacity = (e)=>{
+       
+    // };
+
+    const onChange =  (e) =>{
         if(e.target.placeholder === 'USERNAME'){
             if(e.target.value !== ''){
                 setUserNameTextOpacity(1);
@@ -111,9 +124,6 @@ const SignUp = () => {
                 setQuestionTextOpacity(0);
             }
         }
-    };
-
-    const onChange = async (e) =>{
         const {name, value} = e.target;
         setFormData({
             ...formData,
@@ -122,7 +132,7 @@ const SignUp = () => {
     }
     const onSubmit = (e)=>{
         e.preventDefault();
-
+        console.log(formData)
         if(isNaN(formData.mobileNumber)){
             alert("전화번호는 숫자만 입력해주세요");
             setFormData({
@@ -133,30 +143,33 @@ const SignUp = () => {
 
         //유효성검사 - 글자수 제한, 유의미한 데이터인지 파악 등
         //1. id의 길이(4-10자 입력)
-        if(formData.c_id.length<4 || formData.c_id.length>=11) alert("ID가 양식에 적합하지 않습니다.");
+        if(formData.username.length<4 || formData.username.length>=11) alert("ID가 양식에 적합하지 않습니다.");
         //2. 비밀번호의 최소길이 4글자 이상
-        else if(formData.c_password.length<4 || formData.c_pwch.length<4) alert("비밀번호는 4자 이상 입력해주세요.");
+        else if(formData.password.length<4 || formData.password.length<4) alert("비밀번호는 4자 이상 입력해주세요.");
         //3. 비밀번호와 비밀번호확인이 일치하는지
-        else if(formData.c_password !== formData.c_pwch) alert("비밀번호가 일치하지 않습니다.");
-        //4. 전화번호 phone은 3글자 / phone2, phone3은 4글자
-        else if(formData.c_phone.length>=4 || formData.c_phone2.length>=5 || formData.c_phone3.length>=5 ) alert("전화번호 양식에 적합하지 않습니다.");
+        else if(formData.password !== formData.passwordCheck) alert("비밀번호가 일치하지 않습니다.");
+        //4. 전화번호
+        else if(formData.mobileNumber.length<10) alert("전화번호 양식에 적합하지 않습니다.");
         //중복아이디 체크
         // else {
         //     if (formData.c_id===)
         // }
         //input에 값이 있는지 체크하고
-        if(formData.c_id !== "" && formData.c_password !== "" && formData.c_pwch !== "" && formData.c_name !== "" && formData.c_gender !== "" &&
-        formData.c_phone !== "" && formData.c_add !== "" && formData.c_adddetail !=="" && formData.c_email !==""){
+        if(formData.username !== "" && formData.password !== "" && formData.passwordCheck !== "" && formData.eMail !== "" 
+        && formData.mobileNumber !== "" && formData.question !=="" && formData.answer !==""){
+            console.log("값이 있어요")
             insertJoin();
+        }else {
+            console.log("값이 없어요")
         }
     }
     //insertJoin 함수
     function insertJoin(){
-        axios.post("http://localhost:8000/signup",formData)
+        axios.post("http://localhost:8080/signup",formData)
         // axios.post(`${API_URL}/register`,formData)
         .then(res=>{
             console.log(res);
-            // navigate('/');              
+            navigate('/');              
         })
         .catch(e=>{
             console.log(e);
@@ -173,40 +186,40 @@ const SignUp = () => {
                 </li>
                 <li>
                     <p style={{opacity:userNameTextOpacity}}>USERNAME</p>
-                    <input onFocus={inputFocus} onChange={textTypeOpacity} placeholder='USERNAME' />
+                    <input type="text" onFocus={inputFocus} onChange={onChange} value={formData.username} name="username" placeholder='USERNAME' />
                     <div className='inputLine' style={{backgroundColor: userNameLineColor}}></div>
                 </li>
                 <li>
                     <p style={{opacity:passwordTextOpacity}}>PASSWORD</p>
-                    <input type="text" onFocus={inputFocus} onChange={textTypeOpacity} placeholder='PASSWORD' />
+                    <input type="text" onFocus={inputFocus} onChange={onChange}  value={formData.password} name="password" placeholder='PASSWORD' />
                     <div className='inputLine' style={{backgroundColor: passwordLineColor}}></div>
                 </li>
                 <li>
                     <p style={{opacity:passwordCheckTextOpacity}}>PASSWORD CHECK</p>
-                    <input type="text" onFocus={inputFocus} onChange={textTypeOpacity} placeholder='PASSWORD CHECK' />
+                    <input type="text" onFocus={inputFocus} onChange={onChange}  value={formData.passwordCheck} name="passwordCheck" placeholder='PASSWORD CHECK' />
                     <div className='inputLine' style={{backgroundColor: passwordCheckLineColor}}></div>
                 </li>
                 <li>
                     <p style={{opacity:eMailTextOpacity}}>E-MAIL</p>
-                    <input type="text" onFocus={inputFocus} onChange={textTypeOpacity} placeholder='E-MAIL' />
+                    <input type="text" onFocus={inputFocus} onChange={onChange}  value={formData.eMail} name="eMail" placeholder='E-MAIL' />
                     <div className='inputLine' style={{backgroundColor: eMailLineColor}}></div>
                 </li>
                 <li>
                     <p style={{opacity:mobileNumberTextOpacity}}>MOBILE NUMBER</p>
-                    <input type="text" name='mobileNumber' onFocus={inputFocus} onChange={textTypeOpacity} placeholder='MOBILE NUMBER' />
+                    <input type="text" onFocus={inputFocus} onChange={onChange}  value={formData.mobileNumber} name="mobileNumber" placeholder='MOBILE NUMBER' />
                     <div className='inputLine' style={{backgroundColor: mobileNumberLineColor}}></div>
                 </li>
                 <li>
                     <p style={{opacity:questionTextOpacity}}>QUESTION</p>
                     <div id='questionWrap'>
-                        <select name='question' onClick={inputFocus}>
-                            <option value="eSchool">출신 초등학교는?</option>
-                            <option value="nickname">자신의 별명은?</option>
-                            <option value="speciality">자신의 특기는?</option>
-                            <option value="bestFriend">가장 친한 친구의 이름은?</option>
-                            <option value="bestPlace">가장 좋아하는 장소는?</option>
+                        <select name='question' value={formData.question} onClick={inputFocus} onChange={onChange}>
+                            <option value="1">출신 초등학교는?</option>
+                            <option value="2">자신의 별명은?</option>
+                            <option value="3">자신의 특기는?</option>
+                            <option value="4">가장 친한 친구의 이름은?</option>
+                            <option value="5">가장 좋아하는 장소는?</option>
                         </select>
-                        <input type="text" onFocus={inputFocus} onChange={textTypeOpacity} placeholder='QUESTION ANSWER'/>
+                        <input type="text" onFocus={inputFocus} onChange={onChange}  value={formData.answer} name="answer" placeholder='QUESTION ANSWER'/>
                     </div>
                     <div className='inputLine' style={{backgroundColor:questionLineColor}}></div>
                 </li>

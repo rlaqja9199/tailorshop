@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {  Routes, Route } from 'react-router-dom';
 import './App.css';
 import AboutUs from './component/AboutUs';
 import Directions from './component/Directions';
@@ -12,7 +12,6 @@ import ScrollToTop from './include/ScrollToTop';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
         <ScrollToTop />
         <Header />
         <Routes>
@@ -23,7 +22,6 @@ function App() {
           <Route path="/promotion" element={<Promotion />}></Route>
           <Route path="/review" element={<Review />}></Route>
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }

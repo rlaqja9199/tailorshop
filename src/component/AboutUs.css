@@ -144,9 +144,14 @@
     border-width: 100%;
     cursor: pointer;
 }
-#aboutUsList li p {
+#aboutUsList li .listName {
     cursor: pointer;
 }
+#aboutUsList li:hover {
+    transition: 0.5s;
+    border-bottom: 1px solid #2e5fd1;
+}
+
 .aboutUsListScreen {
     position: fixed;
     width: 100%;
