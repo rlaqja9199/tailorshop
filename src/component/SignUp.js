@@ -194,12 +194,12 @@ const SignUp = () => {
                 </li>
                 <li>
                     <p style={{opacity:passwordTextOpacity}}>PASSWORD</p>
-                    <input type="text" onFocus={inputFocus} onChange={onChange}  value={formData.password} name="password" placeholder='PASSWORD' />
+                    <input type="password" onFocus={inputFocus} onChange={onChange}  value={formData.password} name="password" placeholder='PASSWORD' />
                     <div className='inputLine' style={{backgroundColor: passwordLineColor}}></div>
                 </li>
                 <li>
                     <p style={{opacity:passwordCheckTextOpacity}}>PASSWORD CHECK</p>
-                    <input type="text" onFocus={inputFocus} onChange={onChange}  value={formData.passwordCheck} name="passwordCheck" placeholder='PASSWORD CHECK' />
+                    <input type="password" onFocus={inputFocus} onChange={onChange}  value={formData.passwordCheck} name="passwordCheck" placeholder='PASSWORD CHECK' />
                     <div className='inputLine' style={{backgroundColor: passwordCheckLineColor}}></div>
                 </li>
                 <li>

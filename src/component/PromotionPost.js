@@ -1,11 +1,16 @@
 import React from 'react';
-import './Promotion.css';
 
-const PromotionPost = ({post}) => {
+const PromotionPost = (props) => {
+  const post = props.post
+  const onClick = (e)=>{
+    console.log(post.id)
+    props.setPostId(post.id)
+  }
   return (
+    <>
     <div className='slideImg'>
         <div style={{width:`100%`, height:`430px`,overflow:`hidden`}}>
-            <img src={post.imgsrc1} alt='' />
+            <img onClick={onClick} src={post.imgsrc1} alt='' />
         </div>
         <h4 className='postTitle'>{post.title}</h4>
         <p className='postBody'>
@@ -13,6 +18,7 @@ const PromotionPost = ({post}) => {
         </p>
         <p className='postPeriod'>{post.period}</p>
     </div>
+    </>
   )
 }
 

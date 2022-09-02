@@ -5,7 +5,11 @@ import './Promotion.css'
 import PromotionPost from './PromotionPost';
 
 const Promotion = () => {
-  const [allPromotionPost, setAllPromotionPost] = useState();
+  const [allPromotionPost, setAllPromotionPost] = useState([]);
+  const [promotionDetail, setPromotionDetail] = useState([]);
+  const [postId, setPostId] = useState();
+  const [detailTitle,setDetailTitle] = useState();
+  const [detailPeriod, setDetailPeriod] = useState();
   
 
   useEffect(()=>{ 
@@ -25,6 +29,7 @@ const Promotion = () => {
   let settings = {
     dots: true,
     infinite: true,
+    arrows: false,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
@@ -32,17 +37,21 @@ const Promotion = () => {
     pauseOnHover: false,
     className: "slider3",
   };
-
+  if(allPromotionPost.length === 0) return;
   return (
     <div id='promotion'>
       <div id='promotionImg'>BARON</div>
       <div id='promotionPost'>
         <h3>Promotion</h3>
+        <div className='regBtn'>
+          <button>등록</button>
+          <button>삭제</button>
+        </div>
         <Slider {...settings}>
-          {/* {allPromotionPost.map(post=>(
-                    <PromotionPost key={post.id} post={post}/>
-                ))}  */}
-          <div className='slideImg'>
+          {allPromotionPost.map(post=>(
+                    <PromotionPost key={post.id} post={post} setPostId={setPostId}/>
+                ))} 
+          {/* <div className='slideImg'>
             <div style={{width:`100%`, height:`430px`,overflow:`hidden`}}>
               <img src='/images/fallPromotion1.jpg' alt='' />
             </div>
@@ -86,7 +95,7 @@ const Promotion = () => {
               제일모직 및 바론패브릭 원단으로 맞춤시 30% 할인
             </p>
             <p className='postPeriod'>8월30일 ~ 11월30일</p>
-          </div>
+          </div> */}
         </Slider>
       </div>
     </div>
