@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import './Promotion.css'
 import PromotionPost from './PromotionPost';
@@ -24,7 +25,24 @@ const Promotion = () => {
     .catch(e=>{
         console.log(e);
     })
+
+    axios.post("http://localhost:8080/promotion/reg")
+    .then(res=>{
+      console.log('성공');
+    }).catch(err=>{
+      console.log('실패');
+    })
+
   },[])
+
+  const fileName = React.useRef(null);
+  const onClick = (e)=>{
+    console.log(e.target.value)
+    console.log(fileName.current[0])
+  }
+
+
+
 
   let settings = {
     dots: true,
@@ -44,8 +62,22 @@ const Promotion = () => {
       <div id='promotionPost'>
         <h3>Promotion</h3>
         <div className='regBtn'>
-          <button>등록</button>
+          <button><Link to="/poromotionReg">등록</Link></button>
           <button>삭제</button>
+        </div>
+        <div id='regPage'>
+          {/* <form> */}
+            <div>
+              <input id='postTitle' type="text" placeholder='제목' />
+              <textarea id='postBody' cols="50" rows="10" placeholder='내용' />
+              <input id='postPeriod' placeholder='기간 ex)1월1일 ~ 12월 30일' />
+              <input id='postImg' type="file" ref={fileName}/>
+            </div>
+            <div id='regSubmitBtn'>
+              <button id='regSubmit' onClick={onClick}>완료</button>
+              <button id='regCancel' type='cancel'>취소</button>
+            </div>
+          {/* </form> */}
         </div>
         <Slider {...settings}>
           {allPromotionPost.map(post=>(
