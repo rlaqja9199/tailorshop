@@ -1,19 +1,22 @@
 {
   "files": {
-    "main.css": "/tailorshop/static/css/main.66207094.css",
-    "main.js": "/tailorshop/static/js/main.d641bef5.js",
+    "main.css": "/tailorshop/static/css/main.050a4b1a.css",
+    "main.js": "/tailorshop/static/js/main.917e968c.js",
     "static/js/787.c034fd15.chunk.js": "/tailorshop/static/js/787.c034fd15.chunk.js",
+    "static/media/aboutUsBg2.jpg": "/tailorshop/static/media/aboutUsBg2.50176bb25474eb29cd2a.jpg",
+    "static/media/promotionImg2.jpg": "/tailorshop/static/media/promotionImg2.b2a825ddeb944acfe7a4.jpg",
+    "static/media/aboutUsBg.jpg": "/tailorshop/static/media/aboutUsBg.5ef039fc5d51e7a0e184.jpg",
     "static/media/slick.svg": "/tailorshop/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/tailorshop/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/tailorshop/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/tailorshop/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/tailorshop/index.html",
-    "main.66207094.css.map": "/tailorshop/static/css/main.66207094.css.map",
-    "main.d641bef5.js.map": "/tailorshop/static/js/main.d641bef5.js.map",
+    "main.050a4b1a.css.map": "/tailorshop/static/css/main.050a4b1a.css.map",
+    "main.917e968c.js.map": "/tailorshop/static/js/main.917e968c.js.map",
     "787.c034fd15.chunk.js.map": "/tailorshop/static/js/787.c034fd15.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.66207094.css",
-    "static/js/main.d641bef5.js"
+    "static/css/main.050a4b1a.css",
+    "static/js/main.917e968c.js"
   ]
 }
