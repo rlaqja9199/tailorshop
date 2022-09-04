@@ -1,44 +1,76 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import './Promotion.css'
 import PromotionPost from './PromotionPost';
 
 const Promotion = () => {
   const [allPromotionPost, setAllPromotionPost] = useState([]);
-  const [promotionDetail, setPromotionDetail] = useState([]);
-  const [postId, setPostId] = useState();
-  const [detailTitle,setDetailTitle] = useState();
-  const [detailPeriod, setDetailPeriod] = useState();
+  const [regOn, setRegOn] = useState('-360px');
+  const [delBtn, setDelBtn] = useState('none');
+  const [formData, setFormData] = useState({
+    title: "",
+    body: "",
+    imgsrc1: "",
+    period: "",
+  })
   
-
+  
   useEffect(()=>{ 
     axios.get("http://localhost:8080/promotion")
     // axios.get(`https://dress-shop-server.herokuapp.com/dresses`)
     .then(result=>{
-        const promotion = result.data;
-        console.log(result.data)
-        console.log(promotion)
-        setAllPromotionPost(promotion)
+      const promotion = result.data;
+      console.log(result.data)
+      console.log(promotion)
+      setAllPromotionPost(promotion)
     })
     .catch(e=>{
-        console.log(e);
+      console.log(e);
     })
-
-    axios.post("http://localhost:8080/promotion/reg")
-    .then(res=>{
-      console.log('성공');
-    }).catch(err=>{
-      console.log('실패');
-    })
-
+    
   },[])
+  const onChageInput = (e)=>{
+    const {name, value} = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+  
+  const onSubmit = (e)=>{
+    e.preventDefault();
+    console.log(formData);
+    insertPost();
+  }
+  const insertPost = ()=>{
+    axios.post("http://localhost:8080/postreg",formData)
+    .then(res=>{
+      alert('등록 완료')
+      setRegOn('-360px')
+    }).catch(err=>{
+      alert('등록 실패');
+    })
+  }
 
-  const fileName = React.useRef(null);
-  const onClick = (e)=>{
-    console.log(e.target.value)
-    console.log(fileName.current[0])
+
+
+
+  const mobileOn = ()=>{
+    if(regOn === '-360px'){
+      setRegOn('50px')
+    }else {
+      setRegOn('-360px')
+
+    }
+  }
+  const deleteBtn = ()=>{
+    if(delBtn === 'block'){
+      setDelBtn('none')
+    }else{
+      setDelBtn('block')
+    }
   }
 
 
@@ -55,33 +87,43 @@ const Promotion = () => {
     pauseOnHover: false,
     className: "slider3",
   };
-  if(allPromotionPost.length === 0) return;
+  // if(allPromotionPost.length === 0) return;
   return (
     <div id='promotion'>
       <div id='promotionImg'>BARON</div>
       <div id='promotionPost'>
         <h3>Promotion</h3>
         <div className='regBtn'>
-          <button><Link to="/poromotionReg">등록</Link></button>
-          <button>삭제</button>
+          <button onClick={mobileOn}>등록</button>
+          <button onClick={deleteBtn}>삭제</button>
         </div>
-        <div id='regPage'>
-          {/* <form> */}
-            <div>
-              <input id='postTitle' type="text" placeholder='제목' />
-              <textarea id='postBody' cols="50" rows="10" placeholder='내용' />
-              <input id='postPeriod' placeholder='기간 ex)1월1일 ~ 12월 30일' />
-              <input id='postImg' type="file" ref={fileName}/>
+        <div id='regPage' style={{right:regOn}}>
+          <form onSubmit={onSubmit}>
+          <div id='blackBg'>
+            <div id='bgHeader'></div>
+            <div id='mobileBody'>
+              <input id='postTitle' name='title' onChange={onChageInput} type="text" placeholder='제목' />
+              <textarea id='postBody' name='body' onChange={onChageInput} cols="50" rows="20" placeholder='내용' />
+              <input id='postPeriod' name='period' onChange={onChageInput} type="text" placeholder='기간 ex)1월1일 ~ 12월 30일' />
+              <input id='postImg' name='imgsrc1' onChange={onChageInput} type="file"/>
             </div>
             <div id='regSubmitBtn'>
-              <button id='regSubmit' onClick={onClick}>완료</button>
-              <button id='regCancel' type='cancel'>취소</button>
+              <button id='regSubmit' type='submit'>완료</button>
+              <button id='regCancel' type='reset'>취소</button>
             </div>
-          {/* </form> */}
+            <div id='bgFooter' onClick={mobileOn}></div>
+          </div>
+          </form>
+          <div id='mobileSide'>
+            <div id='side1'></div>
+            <div id='side2'></div>
+            <div id='side3'></div>
+            <div id='side4'></div>
+          </div>
         </div>
         <Slider {...settings}>
           {allPromotionPost.map(post=>(
-                    <PromotionPost key={post.id} post={post} setPostId={setPostId}/>
+                    <PromotionPost key={post.id} post={post} delBtn={delBtn}/>
                 ))} 
           {/* <div className='slideImg'>
             <div style={{width:`100%`, height:`430px`,overflow:`hidden`}}>

@@ -1,3 +1,8 @@
+#promotion {
+    width: 100%;
+    height: 100%;
+    
+}
 #promotionImg {
     position: absolute;
     top: 60px;
@@ -24,7 +29,8 @@
 #promotionPost{
     position: absolute;
     width: 100%;
-    bottom: -50%;
+    top: 60%;
+    overflow: hidden;
 }
 #promotionPost h3{
     color: #eee;
@@ -82,40 +88,175 @@
 }
 
 
-/* 프로모션 페이지 */
+/* 프로모션 등록  */
 #regPage {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    right: 10px;
-    width: 400px;
-    background-color: tomato;
-    height: 500px;
+    top: 150px;
+    width: 350px;
+    background-color: #eee;
+    height: 717px;
     z-index: 20;
-    padding: 20px;
+    padding: 2px;
+    border-radius: 42px;
+    transition: 1s;
+}
+#regPage form{
+    width: 100%;
+    height: 100%;
+}
+#blackBg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    border-radius: 42px;
+}
+#bgHeader {
+    position: absolute;
+    left: 50%;
+    top: 35px;
+    transform: translateX(-50%);
+    background: #000;
+    width: 90px;
+    height: 7px;
+    border-radius: 8px;
+}
+#bgHeader::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -15px;
+    height: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #111;
+}
+#mobileBody {
+    position: absolute;
+    background-color: #fff;
+    width: 327px;
+    height: 570px;
+    top: 70px;
+    left: 10px;
 }
 #postTitle {
-    width: 360px;
+    width: 310px;
     height: 30px;
-    margin-bottom: 15px;
+    margin: 15px 0;
     padding: 10px;
 }
 #postBody {
-    width: 360px;
+    width: 310px;
     margin-bottom: 15px;
     padding: 10px;
 }
 #postPeriod{
-    width: 360px;
+    width: 310px;
     height: 30px;
     margin-bottom: 15px;
     padding: 10px;
 }
 #postImg{
     width: 360px;
+    padding: 10px;
+}
+
+#regSubmitBtn{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 #regSubmitBtn button{
+    width: 60px;
+    height: 30px;
+    margin: 0 8px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+}
+#bgFooter {
+    position: absolute;
+    width: 47px;
+    height: 47px;
+    left: 50%;
+    bottom: 35px;
+    transform: translate(-50%,50%);
+    background-color: #111;
+    border-radius: 50%;
+    border: 1px solid #555;
+    cursor: pointer;
+}
+#mobileSide {
+    position: absolute;
+    width: 100%;
+    /* height: 100%; */
+}
+#mobileSide #side1{
+    position: absolute;
+    top: 100px;
+    left: -5px;
+    width: 5px;
+    height: 30px;
+    background-color: #000;
+    box-shadow: 0px 1px 4px #ccc;
+    border-radius: 2px 0 0 2px;
+}
+#mobileSide #side2{
+    position: absolute;
+    top: 150px;
+    left: -5px;
+    width: 5px;
+    height: 45px;
+    background-color: #000;
+    box-shadow: 0px 1px 4px #ccc;
+    border-radius: 2px 0 0 2px;
+}
+#mobileSide #side3{
+    position: absolute;
+    top: 210px;
+    left: -5px;
+    width: 5px;
+    height: 45px;
+    background-color: #000;
+    box-shadow: 0px 1px 4px #ccc;
+    border-radius: 2px 0 0 2px;
+}
+#mobileSide #side4{
+    position: absolute;
+    top: 180px;
+    right: -5px;
+    width: 5px;
+    height: 60px;
+    background-color: #000;
+    box-shadow: 0px 1px 4px #ccc;
+    border-radius: 0 2px 2px 0;
+}
 
+
+
+/* 삭제버튼 */
+.delBtn {
+    position: absolute;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    right: 50px;
+    border-radius: 50%;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
 }
