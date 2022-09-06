@@ -92,16 +92,14 @@ const Header = () => {
   //로그인
   const navigate = useNavigate();
   // const dispatch = useDispatch();
-  const [loginData, setLoginData] = useState({
-    username: "",
-    password: "",
-  });
-  const onChange = (e)=>{
-    const {name, value} = e.target;
-    setLoginData({
-      ...loginData,
-      [name]: value
-    })
+  const [idData, setIdData] = useState("11");
+  const [pwData, setPwData] = useState("");
+  const onChangeId = (e)=>{
+    console.log(e)
+    setIdData(e.target.value);
+  }
+  const onChangePw = (e)=>{
+    setPwData(e.target.value);
   }
   // const onSubmit = (e)=>{
   //   e.preventDefault();
@@ -182,12 +180,12 @@ const Header = () => {
                           </li>
                           <li>
                             <p style={{opacity:loginTextOn}}>USERNAME</p>
-                            <input name='username' value={loginData.username} onChange={()=>{loginInputChange(); onChange();}} onFocus={inputFocus} placeholder='USERNAME' />
+                            <input name='username' value={idData} onChange={()=>{onChangeId();}} onFocus={inputFocus} placeholder='USERNAME' />
                             <div className='inputLine' style={{backgroundColor:userNameLineColor}}></div>
                           </li>
                           <li>
                             <p style={{opacity:passwordTextOn}}>PASSWORD</p>
-                            <input name='password' value={loginData.password} onChange={()=>{passwordInputChange(); onChange();}} onFocus={inputFocus} placeholder='PASSWORD' />
+                            <input name='password' value={pwData} onChange={()=>{onChangePw();}} onFocus={inputFocus} placeholder='PASSWORD' />
                             <div className='inputLine' style={{backgroundColor:passwordLineColor}}></div>
                           </li>
                           <li>
