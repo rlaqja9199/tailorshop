@@ -1,11 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { API_URL } from './config/contansts';
 
 const PromotionPost = (props) => {
   const post = props.post 
-  const [postId, setPostId] = useState({
-    id: post.id,
-  })
+  const postId = post.id
   const onClick = (e)=>{
     console.log(post.id)
     props.setPostId(post.id)
@@ -22,7 +21,11 @@ const PromotionPost = (props) => {
     } 
   }
   const delClick = ()=>{
-    axios.post("http://localhost:8080/postdel",postId)
+    axios.delete("http://localhost:8080/postdel",{
+      data: {
+        postId: postId
+      }
+    })
     console.log(postId)
     .then(result=>{
       console.log(postId)
@@ -35,7 +38,7 @@ const PromotionPost = (props) => {
     <>
     <div className='slideImg'>
         <div style={{width:`100%`, height:`430px`,overflow:`hidden`}}>
-            <img onClick={onClick} src={post.imgsrc1} alt='' />
+            <img onClick={onClick} src={`${API_URL}/${post.imgsrc}`} alt='' />
             <form onSubmit={delSubmit}>
               <button name='postId' type='submit' className='delBtn' style={{display:props.delBtn}}>삭제</button>
             </form>

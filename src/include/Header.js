@@ -21,7 +21,7 @@ const Header = () => {
   const [loginBoxOpacity, setLoginBoxOpacity] = useState(0);
   const [userNameLineColor, setUserNameLineColor] = useState('#CFD2CF');
   const [passwordLineColor, setPasswordLineColor] = useState('#CFD2CF');
-
+  
   setTimeout(() => {
     setHeaderOpacity(1);
   }, 5000);
@@ -45,8 +45,8 @@ const Header = () => {
       setLogoZ(0);
     }
   }
-
-
+  
+  
   //로그인
   const loginOpen = ()=>{
     if(loginLeft===-0){
@@ -60,7 +60,7 @@ const Header = () => {
       setMenuImgOpacity(1);
     }
   }
-
+  
   const loginInputChange = (e)=>{
     if(e.target.placeholder==='USERNAME' && e.target.value !=='' ){
       setLoginTextOn(1);
@@ -87,50 +87,55 @@ const Header = () => {
       setUserNameLineColor('#607EAA');
     }
   }
-
-
+  
+  
   //로그인
+  const [idData, setIdData] = useState("");
+  const [pwData, setPwData] = useState("");
+  const [loginData, setLoginData] = useState({
+    username: '',
+    password: '',
+  })
   const navigate = useNavigate();
   // const dispatch = useDispatch();
-  const [idData, setIdData] = useState("11");
-  const [pwData, setPwData] = useState("");
+
   const onChangeId = (e)=>{
     console.log(e)
-    setIdData(e.target.value);
+    // setIdData(e.target.value);
+    setLoginData({username: e.target.value})
   }
   const onChangePw = (e)=>{
     setPwData(e.target.value);
+    setLoginData({password: e.target.value})
   }
-  // const onSubmit = (e)=>{
-  //   e.preventDefault();
-  //   if(loginData.username === '' || loginData.password === ''){
-  //     alert('아이디 혹은 비밀번호를 입력해주세요.');
-  //   }else {
-  //     axios.post(`http://localhost:8080/login`,loginData)
-  //     .then(result=>{
-  //         // let useremail = result.data.usermail;
-  //         let username = result.data.username;
-  //         let password = result.data.password;
-  //         console.log(result);
+  const onSubmit = (e)=>{
+      e.preventDefault();
+    if(loginData.username === '' || loginData.password === ''){
+      alert('아이디 혹은 비밀번호를 입력해주세요.');
+    }else {
+      axios.post(`http://localhost:8080/login`,loginData)
+      .then(result=>{
+          // let useremail = result.data.usermail;
+          let username = result.data.username;
+          let password = result.data.password;
+          console.log(result);
           
-  //         if(username !== null && username !== '' && username !== undefined){
-  //             alert('로그인되었습니다.')
-  //             const expires = new Date();
-  //             expires.setMinutes(expires.getMinutes()+60);
-  //             // setCookie('useremail', `${useremail}`, {path: '/', expires})
-  //             setCookie('username', `${username}`, {path: '/', expires})
-  //             setCookie('password', `${password}`, {path: '/', expires})
-  //             dispatch(setLogin())
-  //             dispatch(goToHome(navigate))
-  //         }else {
-  //             alert('이메일과 비밀번호를 확인해주세요 ');
-  //         }
-  //     })
-  //     .catch(e=>{
-  //         alert('이메일과 비밀번호를 확인해주세요 ');
-  //     })
-  //   }
-  // }
+          if(username !== null && username !== '' && username !== undefined){
+              alert('로그인되었습니다.')
+              const expires = new Date();
+              expires.setMinutes(expires.getMinutes()+60);
+              // setCookie('useremail', `${useremail}`, {path: '/', expires})
+              setCookie('username', `${username}`, {path: '/', expires})
+              setCookie('password', `${password}`, {path: '/', expires})
+          }else {
+              alert('이메일과 비밀번호를 확인해주세요 ');
+          }
+      })
+      .catch(e=>{
+          alert('이메일과 비밀번호를 확인해주세요 ');
+      })
+    }
+  }
 
 
 
@@ -174,18 +179,18 @@ const Header = () => {
                     </div>
                     <div id='loginRight' style={{right:`${loginRight}%`}}>
                       <ul id='loginBox' style={{opacity:loginBoxOpacity}}>
-                        <form>
+                        <form onSubmit={onSubmit}>
                           <li>
                             <h3>LOGIN</h3>
                           </li>
                           <li>
                             <p style={{opacity:loginTextOn}}>USERNAME</p>
-                            <input name='username' value={idData} onChange={()=>{onChangeId();}} onFocus={inputFocus} placeholder='USERNAME' />
+                            <input type="text" name='username' value={loginData.username} onChange={onChangeId} onFocus={inputFocus} placeholder='USERNAME' />
                             <div className='inputLine' style={{backgroundColor:userNameLineColor}}></div>
                           </li>
                           <li>
                             <p style={{opacity:passwordTextOn}}>PASSWORD</p>
-                            <input name='password' value={pwData} onChange={()=>{onChangePw();}} onFocus={inputFocus} placeholder='PASSWORD' />
+                            <input type="text" name='password' value={loginData.password} onChange={onChangePw} onFocus={inputFocus} placeholder='PASSWORD' />
                             <div className='inputLine' style={{backgroundColor:passwordLineColor}}></div>
                           </li>
                           <li>

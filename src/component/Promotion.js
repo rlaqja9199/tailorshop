@@ -38,6 +38,21 @@ const Promotion = () => {
       [name]: value
     })
   }
+  const onChangeImg = (e)=>{
+    const {name} = e.target;
+    let imageFormData = new FormData();
+    imageFormData.append(name, e.target.files[0]);
+    axios.post("http://localhost:8080/imgreg", imageFormData,{
+      Header: { 'content-type': 'multipart/form-data' },
+    }).then((response) => {
+      console.log(response.data)
+      setFormData({
+        ...formData,
+        imgsrc: response.data.imgsrc
+      })
+    })
+  }
+
   
   const onSubmit = (e)=>{
     e.preventDefault();
@@ -105,7 +120,7 @@ const Promotion = () => {
               <input id='postTitle' name='title' onChange={onChageInput} type="text" placeholder='제목' />
               <textarea id='postBody' name='body' onChange={onChageInput} cols="50" rows="20" placeholder='내용' />
               <input id='postPeriod' name='period' onChange={onChageInput} type="text" placeholder='기간 ex)1월1일 ~ 12월 30일' />
-              <input id='postImg' name='imgsrc1' onChange={onChageInput} type="file"/>
+              <input id='postImg' name='imgsrc' onChange={onChangeImg} type="file"/>
             </div>
             <div id='regSubmitBtn'>
               <button id='regSubmit' type='submit'>완료</button>
