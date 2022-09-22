@@ -90,23 +90,28 @@ const Header = () => {
   
   
   //로그인
-  const [idData, setIdData] = useState("");
-  const [pwData, setPwData] = useState("");
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
   })
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
 
   const onChangeId = (e)=>{
     console.log(e)
-    // setIdData(e.target.value);
     setLoginData({username: e.target.value})
+    if(e.target.placeholder==='USERNAME' && e.target.value !=='' ){
+      setLoginTextOn(1);
+    }else {
+      setLoginTextOn(0);
+    }
   }
   const onChangePw = (e)=>{
-    setPwData(e.target.value);
     setLoginData({password: e.target.value})
+    if(e.target.placeholder==='PASSWORD' && e.target.value !==''){
+      setPasswordTextOn(1);
+    }else {
+      setPasswordTextOn(0);
+    }
   }
   const onSubmit = (e)=>{
       e.preventDefault();
