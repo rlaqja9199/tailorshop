@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { API_URL } from './config/contansts'
 
 const ReviewPost = (props) => {
@@ -16,7 +16,7 @@ const ReviewPost = (props) => {
       } 
     }
     const delClick = ()=>{
-      axios.delete("http://localhost:8080/reviewdel",{
+      axios.delete(`${API_URL}/reviewdel`,{
         data: {
           postId: postId
         }

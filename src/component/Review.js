@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { API_URL } from './config/contansts';
 import './Review.css'
 import ReviewPost from './ReviewPost';
 
@@ -15,7 +16,7 @@ const Review = () => {
 
 
   useEffect(()=>{ 
-    axios.get("http://localhost:8080/review")
+    axios.get(`${API_URL}/review`)
     // axios.get(`https://dress-shop-server.herokuapp.com/dresses`)
     .then(result=>{
       const review = result.data;
@@ -40,7 +41,7 @@ const Review = () => {
     const {name} = e.target;
     let imageFormData = new FormData();
     imageFormData.append(name, e.target.files[0]);
-    axios.post("http://localhost:8080/imgreg", imageFormData,{
+    axios.post(`${API_URL}/imgreg`, imageFormData,{
       Header: { 'content-type': 'multipart/form-data' },
     }).then((response) => {
       console.log(response.data)
@@ -57,7 +58,7 @@ const Review = () => {
     insertPost();
   }
   const insertPost = ()=>{
-    axios.post("http://localhost:8080/reviewreg",formData)
+    axios.post(`${API_URL}/reviewreg`,formData)
     .then(res=>{
       alert('등록 완료')
       setRegOn('-360px')

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
+import { API_URL } from './config/contansts';
 import './Promotion.css'
 import PromotionPost from './PromotionPost';
 
@@ -18,7 +18,7 @@ const Promotion = () => {
   
   
   useEffect(()=>{ 
-    axios.get("http://localhost:8080/promotion")
+    axios.get(`${API_URL}/promotion`)
     // axios.get(`https://dress-shop-server.herokuapp.com/dresses`)
     .then(result=>{
       const promotion = result.data;
@@ -42,7 +42,7 @@ const Promotion = () => {
     const {name} = e.target;
     let imageFormData = new FormData();
     imageFormData.append(name, e.target.files[0]);
-    axios.post("http://localhost:8080/imgreg", imageFormData,{
+    axios.post(`${API_URL}/imgreg`, imageFormData,{
       Header: { 'content-type': 'multipart/form-data' },
     }).then((response) => {
       console.log(response.data)
@@ -60,7 +60,7 @@ const Promotion = () => {
     insertPost();
   }
   const insertPost = ()=>{
-    axios.post("http://localhost:8080/postreg",formData)
+    axios.post(`${API_URL}/postreg`,formData)
     .then(res=>{
       alert('등록 완료')
       setRegOn('-360px')
