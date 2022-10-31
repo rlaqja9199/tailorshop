@@ -24,7 +24,7 @@ const Location=()=>{
 
     return (
         <div>
-        <div id="map" style={{width:"40%", height:"50vh"}}></div>
+        <div id="map"></div>
        
         </div>
     )

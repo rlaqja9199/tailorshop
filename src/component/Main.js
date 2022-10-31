@@ -5,6 +5,7 @@ import MainSlide from './MainSlide'
 import Map from './Map'
 import WeatherTab from './WeatherTab'
 import { throttle } from 'lodash';
+import { useScroll } from './hooks/useScroll'
 
 const Main = () => {
   const [textBlur, setTextBlur] = useState('2px 2px 20px #fff');
@@ -26,7 +27,7 @@ const Main = () => {
   const [cPage3Z, setCPage3Z] = useState(1);
   const [directionsPage, setDirectionsPage] = useState(0);
   const [directionsPageZIndex, setDirectionsPageZIndex] = useState(0);
-  const [footerOn, setFooterOn] = useState("-20vh");
+  const [footerOn, setFooterOn] = useState("-40vh");
   const [footerZIndex, setFooterZIndex] = useState(0);
 
 
@@ -40,10 +41,10 @@ const Main = () => {
 
 
 
+  const innerHeight = window.innerHeight;
   const throttleScroll = useMemo(()=>
     throttle(()=>{
       const scrollY = window.scrollY;
-      const innerHeight = window.innerHeight;
 
       console.log('스크롤Y'+scrollY);
       console.log(innerHeight);
@@ -63,7 +64,7 @@ const Main = () => {
         setCPage2Height(100);
         setCPage3Height(0);
         setDirectionsPage(0);
-        setFooterOn("-20vh");
+        setFooterOn("-40vh");
         setCPage3Z(10);
         setCPage2Z(1);
         setTimeout(() => {
@@ -132,10 +133,19 @@ const Main = () => {
   
   useEffect(()=>{
     window.addEventListener('scroll',throttleScroll);
+    return ()=> window.removeEventListener("scroll", throttleScroll)
   },[])
+
+  const {x,y} = useScroll();
+  const dirPage = (a)=>{
+    setTimeout(() => {
+      return a;
+    }, 2000);
+  }
   return (
     <div id='main'>
-      <div id='page1' style={{opacity: page1Opacity}}>
+      {/* <div id='page1' style={{opacity: page1Opacity}}> */}
+      <div id='page1' style={{opacity: y> innerHeight*2? 0 : 1}}>
         <MainSlide />
         <div id='slideText'>
             <h3 style={{color:textColor, textShadow: textBlur, opacity: textOpacity}}>BARON</h3>
@@ -144,18 +154,22 @@ const Main = () => {
         <WeatherTab />
       </div>
       <div id='emptyBox'></div>
-      <div id='page2' style={{opacity: page2Opacity}}>
+      {/* <div id='page2' style={{opacity: page2Opacity}}> */}
+      <div id='page2' style={{opacity: y >innerHeight*4? 0: (y>innerHeight*2? 1 : 0) }}>
         <img src='/images/page21.jpg' alt='' />
         <p>한 땀 한 땀 <br/> 장인의 손길로</p>
       </div>
-      <div id='page3' style={{opacity: page3Opacity}}>
+      {/* <div id='page3' style={{opacity: page3Opacity}}> */}
+      <div id='page3' style={{opacity: y>innerHeight*6? 0 : (y>innerHeight*4? 1 : 0)}}>
         <img src='/images/page22.jpg' alt='' />
         <p>오직 당신에게<br/>꼭 맞는 당신만의</p>
       </div>
-      <div id='page4' style={{opacity: page4Opacity}}>
+      {/* <div id='page4' style={{opacity: page4Opacity}}> */}
+      <div id='page4' style={{opacity: y>innerHeight*8? 0 : (y>innerHeight*6? 1 : 0)}}>
         <img src='/images/main6.jpg' alt='' />
         <p>BARON</p>
       </div>
+      {/* <div className='categoryPage' style={{opacity: categoryPage1,zIndex:cPage1Z}}> */}
       <div className='categoryPage' style={{opacity: categoryPage1,zIndex:cPage1Z}}>
         <div className='leftMainPage cPageL1' style={{top:`${cPage1Height}vh`}}>
           <img src='/images/bespoke1.jpg' alt='' style={{opacity: cPage1Opacity}} />
@@ -163,7 +177,7 @@ const Main = () => {
         <div className='rightMainPage cPageR1' style={{bottom:`${cPage1Height}vh`}}>
           <div id='p1Text'>
             <h3 style={{opacity: cPage1Opacity}}>BESPOKE</h3>
-            <p style={{opacity: cPage1Opacity}}>"특별한 사람을 위하여 <br/> 특별히 만들어진"</p>
+            <p style={{opacity: cPage1Opacity}}>"특별한 사람을 위하여 <br/><br/> 특별히 만들어진"</p>
             <span style={{opacity: cPage1Opacity}}>Own your fit</span>
             <div className='detailView' style={{opacity: cPage1Opacity}}>DETAIL VIEW</div>
           </div>
@@ -191,14 +205,16 @@ const Main = () => {
           <div className='detailView' style={{opacity:cPage3Opacity}}>DETAIL VIEW</div>
         </div>
       </div>
-      <div id='directionsPage' style={{opacity:directionsPage, zIndex:directionsPageZIndex}}>
+      {/* <div id='directionsPage' style={{opacity:directionsPage, zIndex:directionsPageZIndex}}> */}
+      <div id='directionsPage' style={{opacity: y>innerHeight*14? dirPage(1) : 0, zIndex:directionsPageZIndex}}>
         <div className='directionLeftPage'>
           <div id='shopImg'>
             <img src="/images/shopImg.jpg" alt='' id='shopImgDetail' />
           </div>
           <Map />
         </div>
-        <div className='directionRightPage' style={{opacity:directionsPage}}>
+        {/* <div className='directionRightPage' style={{opacity:directionsPage}}> */}
+        <div className='directionRightPage' style={{opacity: y>innerHeight*14? dirPage(1) : 0}}>
           <h2>Directions</h2>
           <div id='textBox'>
             <p>Address.<span><br/>전라남도 순천시 왕지5길 54 1층<br/>전라남도 순천시 왕지동 855-10 1층</span></p>
@@ -213,6 +229,7 @@ const Main = () => {
         </div>
       </div>
       <div className='footer' style={{bottom: footerOn, zIndex: footerZIndex}}>
+      {/* <div className='footer' style={{bottom: y>innerHeight*14? 0: "-40vh", zIndex: footerZIndex}}> */}
         <Footer />
       </div>
     </div>

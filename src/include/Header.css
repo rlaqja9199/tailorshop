@@ -291,3 +291,13 @@
     cursor: pointer;
     color: #4d4d4d;
 }
+
+
+@media screen and (max-width: 768px) {
+    #menuWrap div img{
+        height: 100vh;
+        width: auto;
+        position: absolute;
+        left: 0;
+    }
+}

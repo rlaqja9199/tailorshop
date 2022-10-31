@@ -25,3 +25,10 @@
     animation: slideImgAni 5s;
     animation-fill-mode: backwards;
 }
+@media screen and (max-width: 768px) {
+    #mainSlide img{
+        width: auto;
+        height: 100vh;
+        transform: translateX(-35%);
+    }
+}
