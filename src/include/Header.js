@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Header.css'
 import axios from 'axios';
 import { setCookie } from '../util/Cookie';
+import { useCookies } from 'react-cookie';
 // import { useDispatch } from 'react-redux'
 // import {setLogin,goToHome} from '../module/logincookie';
 
@@ -21,12 +22,14 @@ const Header = () => {
   const [loginBoxOpacity, setLoginBoxOpacity] = useState(0);
   const [userNameLineColor, setUserNameLineColor] = useState('#CFD2CF');
   const [passwordLineColor, setPasswordLineColor] = useState('#CFD2CF');
+  const [cookie, setCookie] = useCookies(['username']);
   
   setTimeout(() => {
     setHeaderOpacity(1);
   }, 5000);
 
-  const menuOpen = ()=>{
+  const menuOpen = (event)=>{
+    event.preventDefault();
     if(menuOn === 0){
       setMenuOn('-100vh')
       setCloseIconOpacity(0);
@@ -97,8 +100,11 @@ const Header = () => {
   const navigate = useNavigate();
 
   const onChangeId = (e)=>{
-    console.log(e)
-    setLoginData({username: e.target.value})
+    setLoginData({
+      ...loginData,
+      username: e.target.value
+    })
+    console.log(loginData.username);
     if(e.target.placeholder==='USERNAME' && e.target.value !=='' ){
       setLoginTextOn(1);
     }else {
@@ -106,7 +112,11 @@ const Header = () => {
     }
   }
   const onChangePw = (e)=>{
-    setLoginData({password: e.target.value})
+    setLoginData({
+      ...loginData,
+      password: e.target.value
+    })
+    console.log(loginData.password)
     if(e.target.placeholder==='PASSWORD' && e.target.value !==''){
       setPasswordTextOn(1);
     }else {
@@ -114,7 +124,10 @@ const Header = () => {
     }
   }
   const onSubmit = (e)=>{
-      e.preventDefault();
+    console.log(loginData.username);
+    console.log(loginData.password);
+    
+    e.preventDefault();
     if(loginData.username === '' || loginData.password === ''){
       alert('아이디 혹은 비밀번호를 입력해주세요.');
     }else {
@@ -125,19 +138,19 @@ const Header = () => {
           let password = result.data.password;
           console.log(result);
           
+          
           if(username !== null && username !== '' && username !== undefined){
               alert('로그인되었습니다.')
               const expires = new Date();
               expires.setMinutes(expires.getMinutes()+60);
-              // setCookie('useremail', `${useremail}`, {path: '/', expires})
               setCookie('username', `${username}`, {path: '/', expires})
-              setCookie('password', `${password}`, {path: '/', expires})
+              // setCookie('password', `${password}`, {path: '/', expires})
           }else {
-              alert('이메일과 비밀번호를 확인해주세요 ');
+              alert('아이디 혹은 비밀번호를 확인해주세요');
           }
       })
       .catch(e=>{
-          alert('이메일과 비밀번호를 확인해주세요 ');
+          alert('아이디 혹은 비밀번호를 확인해주세요');
       })
     }
   }
@@ -199,7 +212,7 @@ const Header = () => {
                             <div className='inputLine' style={{backgroundColor:passwordLineColor}}></div>
                           </li>
                           <li>
-                            <button type='submit' id='loginBtn' onClick={menuOpen}>LOGIN</button>
+                            <button type='submit' id='loginBtn'>LOGIN</button>
                           </li>
                           <li id='signBox'>
                             <button onClick={menuOpen}><Link to='/signup'>Sign Up</Link></button>
