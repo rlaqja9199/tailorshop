@@ -153,6 +153,9 @@
     transition: 1s;
     cursor: default;
 }
+.rightMainPage>div{
+    transition: 0.5s;
+}
 .rightMainPage h3{
     font-size: 60px;
     margin-top: 60px;

@@ -44,7 +44,7 @@ const PromotionPost = (props) => {
             </form>
         </div>
         <h4 className='postTitle'>{post.title}</h4>
-        <p className='postBody'>
+        <p className='postBody' style={{wordBreak:"keep-all"}}>
             {post.body}
         </p>
         <p className='postPeriod'>{post.period}</p>

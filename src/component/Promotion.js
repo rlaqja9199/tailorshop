@@ -1,11 +1,13 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useCookies } from 'react-cookie';
 import Slider from 'react-slick';
 import { API_URL } from './config/contansts';
 import './Promotion.css'
 import PromotionPost from './PromotionPost';
 
 const Promotion = () => {
+  const [cookies] = useCookies(['username']);
   const [allPromotionPost, setAllPromotionPost] = useState([]);
   const [regOn, setRegOn] = useState('-360px');
   const [delBtn, setDelBtn] = useState('none');
@@ -109,8 +111,8 @@ const Promotion = () => {
       <div id='promotionPost'>
         <h3>Promotion</h3>
         <div className='regBtn'>
-          <button onClick={mobileOn}>등록</button>
-          <button onClick={deleteBtn}>삭제</button>
+          <button onClick={mobileOn} style={{display:cookies.username === "admin"? "inline-block" : "none"}}>등록</button>
+          <button onClick={deleteBtn} style={{display:cookies.username === "admin"? "inline-block" : "none"}}>삭제</button>
         </div>
         <div id='regPage' style={{right:regOn}}>
           <form onSubmit={onSubmit}>

@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React from 'react'
+import { useCookies } from 'react-cookie';
 import { API_URL } from './config/contansts'
 
 const ReviewPost = (props) => {
     const post = props.post;
     const postId = post.id;
+    const [cookies] = useCookies(['username']);
 
     const delSubmit = ()=>{
       if(window.confirm("정말 하시겠습니까?")){
@@ -35,7 +37,7 @@ const ReviewPost = (props) => {
             <div className='reviewPostImg'>
               <img src={`${API_URL}/${post.imgsrc}`} alt='' />
               <form onSubmit={delSubmit}>
-                <button name='postId' type='submit' className='delBtn' style={{display:props.delBtn}}>삭제</button>
+                <button name='postId' type='submit' className='delBtn' style={{display:cookies.username === post.username? props.delBtn : "none"}}>삭제</button>
               </form>
             </div>
             <div className='reviewPostText'>

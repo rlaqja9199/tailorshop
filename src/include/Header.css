@@ -148,7 +148,7 @@
     transition: 0.5s;
     bottom: 0;
 }
-#menuWrap ul li span:hover::after {
+#menuWrap ul li:not(:nth-child(2)) span:hover::after {
     width: 100%;
 }
 #menuWrap ul #closeIcon {

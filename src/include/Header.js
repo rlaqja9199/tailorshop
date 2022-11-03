@@ -1,9 +1,9 @@
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css'
 import axios from 'axios';
 import { setCookie } from '../util/Cookie';
-import { useCookies } from 'react-cookie';
+import { Cookies, useCookies } from 'react-cookie';
 // import { useDispatch } from 'react-redux'
 // import {setLogin,goToHome} from '../module/logincookie';
 
@@ -22,7 +22,9 @@ const Header = () => {
   const [loginBoxOpacity, setLoginBoxOpacity] = useState(0);
   const [userNameLineColor, setUserNameLineColor] = useState('#CFD2CF');
   const [passwordLineColor, setPasswordLineColor] = useState('#CFD2CF');
-  const [cookie, setCookie] = useCookies(['username']);
+
+  const [cookies, setCookie, removeCookie] = useCookies(['username']);
+  const [userId, setUserId] = useState(null);
   
   setTimeout(() => {
     setHeaderOpacity(1);
@@ -52,7 +54,7 @@ const Header = () => {
   
   //로그인
   const loginOpen = ()=>{
-    if(loginLeft===-0){
+    if(loginLeft===0){
       setLoginLeft(1);
       setLoginRight(-25);
       setMenuImgOpacity(0);
@@ -143,8 +145,14 @@ const Header = () => {
               alert('로그인되었습니다.')
               const expires = new Date();
               expires.setMinutes(expires.getMinutes()+60);
-              setCookie('username', `${username}`, {path: '/', expires})
+              setCookie('username', `${username}`, {path: '/', expires});
               // setCookie('password', `${password}`, {path: '/', expires})
+              setLoginLeft(1);
+              loginOpen();
+              setLoginData({
+                username:'',
+                password:'',
+              });
           }else {
               alert('아이디 혹은 비밀번호를 확인해주세요');
           }
@@ -155,11 +163,26 @@ const Header = () => {
     }
   }
 
+  useEffect(()=>{
+    if(cookies.username !== undefined){
+      setUserId(cookies.username);
+    }
+  },[cookies])
+  const logoutOnChange = (e)=>{
+    removeCookie('username');
+    if(cookies.username === undefined){
+      setUserId(null);
+      alert('로그아웃 되었습니다.');
+      navigate(`/`);
+      setMenuOn('-100vh');
+      menuOpen();
+    }
+  }
 
 
   return (
     <div id='header' style={{opacity:headerOpacity}}>
-        <h1 style={{zIndex:logoZ}}><a href="/">BARON</a></h1>
+        <h1 style={{zIndex:logoZ}}><a href='/'>BARON</a></h1>
         <div id='menu'>
           <div id='burgerTab' onClick={menuOpen}>
             <div id='whiteLine'>
@@ -184,13 +207,15 @@ const Header = () => {
                     <div></div>
                   </div>
                 </li>
+                <li style={{display:userId!==null? "inline-block":"none", position:"absolute", top:"80px"}}><span style={{fontSize:"50px", lineHeight:"50px", cursor:"default"}}>{userId}</span>님 환영합니다.</li>
                 <li><span><a href="/">Home</a></span></li>
                 <li><span onClick={menuOpen}><Link to="/aboutus">AboutUs</Link></span></li>
                 <li><span onClick={menuOpen}><Link to="/promotion">Promotion</Link></span></li>
                 <li><span onClick={menuOpen}><Link to="review">Review</Link></span></li>
                 <li><span onClick={menuOpen}><Link to="/directions">Directions</Link></span></li>
                 <li>
-                  <span onClick={loginOpen}>Login</span>
+                  <span onClick={loginOpen} style={{display:userId? "none" : "inline-block"}}>Login</span>
+                  <span id='logoutBtn' onClick={logoutOnChange} style={{display:userId===null? "none" : "inline-block"}}>Logout</span>
                   <div id='loginPage'>
                     <div id='loginLeft' style={{opacity:loginLeft, transform:`translateX(${loginLeftImg}%)` }}>
                       <img src="/images/loginLeft.jpg" alt='' style={{transform:`translateX(${loginLeftImg}%)`}} />

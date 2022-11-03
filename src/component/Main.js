@@ -31,6 +31,9 @@ const Main = () => {
   const [footerZIndex, setFooterZIndex] = useState(0);
 
 
+  const {x,y} = useScroll();
+
+
   //페이지 로딩
   setTimeout(() => {
     setTextBlur('0px 0px 0px #eee');
@@ -38,7 +41,6 @@ const Main = () => {
     setTextOpacity('1');
 
   }, 1000);
-
 
 
   const innerHeight = window.innerHeight;
@@ -59,12 +61,12 @@ const Main = () => {
           setFooterOn(0);
         }, 1000);
       }else if(scrollY>(innerHeight*12)){
+        setFooterOn('-40vh');
         setFooterZIndex(0);
         setDirectionsPageZIndex(0);
         setCPage2Height(100);
         setCPage3Height(0);
         setDirectionsPage(0);
-        setFooterOn("-40vh");
         setCPage3Z(10);
         setCPage2Z(1);
         setTimeout(() => {
@@ -131,12 +133,12 @@ const Main = () => {
     },400)
   )
   
+
   useEffect(()=>{
     window.addEventListener('scroll',throttleScroll);
     return ()=> window.removeEventListener("scroll", throttleScroll)
   },[])
 
-  const {x,y} = useScroll();
   const dirPage = (a)=>{
     setTimeout(() => {
       return a;
@@ -170,39 +172,43 @@ const Main = () => {
         <p>BARON</p>
       </div>
       {/* <div className='categoryPage' style={{opacity: categoryPage1,zIndex:cPage1Z}}> */}
-      <div className='categoryPage' style={{opacity: categoryPage1,zIndex:cPage1Z}}>
-        <div className='leftMainPage cPageL1' style={{top:`${cPage1Height}vh`}}>
+      <div className='categoryPage' style={{opacity: y>innerHeight*8? "1":"0",zIndex: y>innerHeight*10? "1":(y>innerHeight*8? "10": "1")}}>
+        <div className='leftMainPage cPageL1' style={{top: y>innerHeight*10? '100vh' : (y>innerHeight*8? '0' : "-100vh")}}>
           <img src='/images/bespoke1.jpg' alt='' style={{opacity: cPage1Opacity}} />
         </div>
-        <div className='rightMainPage cPageR1' style={{bottom:`${cPage1Height}vh`}}>
-          <div id='p1Text'>
-            <h3 style={{opacity: cPage1Opacity}}>BESPOKE</h3>
-            <p style={{opacity: cPage1Opacity}}>"특별한 사람을 위하여 <br/><br/> 특별히 만들어진"</p>
-            <span style={{opacity: cPage1Opacity}}>Own your fit</span>
-            <div className='detailView' style={{opacity: cPage1Opacity}}>DETAIL VIEW</div>
+        <div className='rightMainPage cPageR1' style={{bottom: y>innerHeight*10? '100vh' : (y>innerHeight*8? '0' : "-100vh")}}>
+          <div id='p1Text' style={{opacity: cPage1Opacity}}>
+            <h3>BESPOKE</h3>
+            <p>"특별한 사람을 위하여 <br/><br/> 특별히 만들어진"</p>
+            <span>Own your fit</span>
+            <div className='detailView'>DETAIL VIEW</div>
           </div>
         </div>
       </div>
-      <div className='categoryPage' style={{zIndex:cPage2Z}}>
-        <div className='leftMainPage cPageL2' style={{top:`${cPage2Height}vh`}}>
+      <div className='categoryPage' style={{zIndex: y>innerHeight*12? "1":(y>innerHeight*10? "10": "1")}}>
+        <div className='leftMainPage cPageL2' style={{top: y>innerHeight*12? '100vh' : (y>innerHeight*10? '0' : "-100vh")}}>
           <img src='/images/competitiveness.jpg' alt='' style={{opacity:cPage2Opacity}} />
         </div>
-        <div className='rightMainPage cPageR2' style={{bottom:`${cPage2Height}vh`}}>
-          <h3 style={{opacity:cPage2Opacity}}>Competitiveness</h3>
-          <p style={{opacity:cPage2Opacity}}>"작은 디테일의 차이가 <br/>명품을 만듭니다"</p>
-          <span style={{opacity:cPage2Opacity}}>Own your fit</span>
-          <div className='detailView' style={{opacity:cPage2Opacity}}>DETAIL VIEW</div>
+        <div className='rightMainPage cPageR2' style={{bottom: y>innerHeight*12? '100vh' : (y>innerHeight*10? '0' : "-100vh")}}>
+          <div style={{opacity:cPage2Opacity}}>
+            <h3>Competitiveness</h3>
+            <p>"작은 디테일의 차이가 <br/>명품을 만듭니다"</p>
+            <span>Own your fit</span>
+            <div className='detailView'>DETAIL VIEW</div>
+          </div>
         </div>
       </div>
-      <div className='categoryPage' style={{zIndex:cPage3Z}}>
-        <div className='leftMainPage cPageL3' style={{top:`${cPage3Height}vh`}}>
+      <div className='categoryPage' style={{zIndex: y>innerHeight*14? "1":(y>innerHeight*12? "10": "1")}}>
+        <div className='leftMainPage cPageL3' style={{top: y>innerHeight*14? '100vh' : (y>innerHeight*12? '0' : "-100vh")}}>
           <img src='/images/wedding1.jpg' alt='' style={{opacity:cPage3Opacity}} />
         </div>
-        <div className='rightMainPage cPageR3' style={{bottom:`${cPage3Height}vh`}}>
-          <h3 style={{opacity:cPage3Opacity}}>WEDDING</h3>
-          <p style={{opacity:cPage3Opacity}}>"한번뿐인 그 날을 위해<br/>하나뿐인 당신에게"</p>
-          <span style={{opacity:cPage3Opacity}}>Own your fit</span>
-          <div className='detailView' style={{opacity:cPage3Opacity}}>DETAIL VIEW</div>
+        <div className='rightMainPage cPageR3' style={{bottom: y>innerHeight*14? '100vh' : (y>innerHeight*12? '0' : "-100vh")}}>
+          <div style={{opacity:cPage3Opacity}}>
+            <h3>WEDDING</h3>
+            <p>"한번뿐인 그 날을 위해<br/>하나뿐인 당신에게"</p>
+            <span>Own your fit</span>
+            <div className='detailView'>DETAIL VIEW</div>
+          </div>
         </div>
       </div>
       {/* <div id='directionsPage' style={{opacity:directionsPage, zIndex:directionsPageZIndex}}> */}

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useCookies } from 'react-cookie';
 import { API_URL } from './config/contansts';
 import './Review.css'
 import ReviewPost from './ReviewPost';
@@ -8,10 +9,12 @@ const Review = () => {
   const [allReview, setAllReview] = useState([]);
   const [regOn, setRegOn] = useState('-360px');
   const [delBtn, setDelBtn] = useState('none');
+  const [cookies] = useCookies(['username']);
   const [formData, setFormData] = useState({
     imgsrc: "",
     title: "",
-    passwrod: "",
+    body: "",
+    username: "",
   })
 
 
@@ -70,6 +73,10 @@ const Review = () => {
 
 
   const mobileOn = ()=>{
+    setFormData({
+      ...formData,
+      username: cookies.username,
+    });
     if(regOn === '-360px'){
       setRegOn('50px')
     }else {
@@ -95,8 +102,8 @@ const Review = () => {
         <h3>Review</h3>
         <div id='reviewPostList'>
           <div className='regBtn'>
-            <button onClick={mobileOn}>등록</button>
-            <button onClick={deleteBtn}>삭제</button>
+            <button onClick={mobileOn} style={{display:cookies.username != null? "inline-block" : "none"}}>등록</button>
+            <button onClick={deleteBtn} style={{display:cookies.username != null? "inline-block" : "none"}}>삭제</button>
           </div>
 
           <div id='regPage' style={{right:regOn}}>

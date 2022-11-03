@@ -267,7 +267,7 @@
     background-size: cover;
     background-blend-mode: luminosity;
     position: absolute;
-    bottom: -206vh;
+    /* bottom: -206vh; */
     left: 0;
 }
 

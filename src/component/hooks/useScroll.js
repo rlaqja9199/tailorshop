@@ -8,7 +8,7 @@ export const useScroll = ()=>{
   const onScroll = ()=>{
     //스크롤의 위치가 바뀔 때마다 state의 x와 y의 값을 변경
     setState({y: window.scrollY, x: window.scrollX})
-    console.log("y ", window.scrollY, "x ", window.scrollX);
+    // console.log("y ", window.scrollY, "x ", window.scrollX);
   }
   useEffect(()=>{
     window.addEventListener("scroll", onScroll);
