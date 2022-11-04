@@ -11,24 +11,14 @@ const Main = () => {
   const [textBlur, setTextBlur] = useState('2px 2px 20px #fff');
   const [textColor, setTextColor] = useState('transparent');
   const [textOpacity, setTextOpacity] = useState(0);
-  const [page1Opacity, setPage1Opacity] = useState(1);
   const [page2Opacity, setPage2Opacity] = useState(0);
   const [page3Opacity, setPage3Opacity] = useState(0);
   const [page4Opacity, setPage4Opacity] = useState(0);
-  const [categoryPage1, setCategoryPage1] = useState(0);
-  const [cPage1Height, setCPage1Height] = useState(-100);
   const [cPage1Opacity, setCPage1Opacity] = useState(0);
-  const [cPage1Z, setCPage1Z] = useState(1);
-  const [cPage2Height, setCPage2Height] = useState(-100);
   const [cPage2Opacity, setCPage2Opacity] = useState(0);
-  const [cPage2Z, setCPage2Z] = useState(1);
-  const [cPage3Height, setCPage3Height] = useState(-100);
   const [cPage3Opacity, setCPage3Opacity] = useState(0);
-  const [cPage3Z, setCPage3Z] = useState(1);
   const [directionsPage, setDirectionsPage] = useState(0);
-  const [directionsPageZIndex, setDirectionsPageZIndex] = useState(0);
   const [footerOn, setFooterOn] = useState("-40vh");
-  const [footerZIndex, setFooterZIndex] = useState(0);
 
 
   const {x,y} = useScroll();
@@ -42,108 +32,61 @@ const Main = () => {
 
   }, 1000);
 
-
   const innerHeight = window.innerHeight;
-  const throttleScroll = useMemo(()=>
-    throttle(()=>{
-      const scrollY = window.scrollY;
-
-      console.log('스크롤Y'+scrollY);
-      console.log(innerHeight);
-
-      if(scrollY>(innerHeight*14)){
-        setDirectionsPageZIndex(3);
-        setFooterZIndex(4);
-        setCPage3Height(100);
-        setCPage3Z(1);
-        setTimeout(() => {
-          setDirectionsPage(1);
-          setFooterOn(0);
-        }, 1000);
-      }else if(scrollY>(innerHeight*12)){
-        setFooterOn('-40vh');
-        setFooterZIndex(0);
-        setDirectionsPageZIndex(0);
-        setCPage2Height(100);
-        setCPage3Height(0);
-        setDirectionsPage(0);
-        setCPage3Z(10);
-        setCPage2Z(1);
-        setTimeout(() => {
-          setCPage3Opacity(1);
-        }, 1000);
-      }else if(scrollY>(innerHeight*10)){
-        setCPage1Height(100);
-        setCPage2Height(0);
-        setCPage3Height(-100)
-        setCPage1Z(1)
-        setCPage2Z(10);
-        setCPage3Z(1);
-        setTimeout(() => {
-          setCPage2Opacity(1)
-        }, 1000);
-      }else if(scrollY>(innerHeight*8)){
-        setCategoryPage1(1);
-        setCPage2Height(-100);
-        setPage4Opacity(0);
-        setCPage1Height(0);
-        setCPage1Z(10);
-        setCPage2Z(1);
-        setTimeout(() => {
-          setCPage1Opacity(1)
-        }, 1000);
-      }else if(scrollY>(innerHeight*6)){
-        setCategoryPage1(0);
-        setPage3Opacity(0);
-        setCPage1Height(-100);
-        setCPage1Opacity(0)
-        setCPage1Z(1)
-        setTimeout(() => {
-          setPage4Opacity(1);
-          
-        }, 500);
-      }else if(scrollY>(innerHeight*4)){
-        setPage4Opacity(0);
-        setPage2Opacity(0);
-        setTimeout(() => {
-          setPage3Opacity(1);
-          
-        }, 500);
-      }else if(scrollY>(innerHeight*2)){
-        setPage1Opacity(0);
-        setPage3Opacity(0);
-        setTimeout(() => {
-          setPage2Opacity(1);
-          
-        }, 500);
-      }else if(scrollY<(innerHeight*2)){
-        setPage1Opacity(1);
-        setPage2Opacity(0);
-      }
-      else{
-        setPage1Opacity(0);
-        setPage2Opacity(0);
-        setPage3Opacity(0);
-        setPage4Opacity(0);
-        setCPage1Opacity(0);
-        setCPage2Opacity(0);
-        setCPage3Opacity(0);
-        setDirectionsPage(0);
-      }
-    },400)
-  )
-  
-
+  //매끄러운 스크롤 이벤트를 위한 상태관리 추가
   useEffect(()=>{
-    window.addEventListener('scroll',throttleScroll);
-    return ()=> window.removeEventListener("scroll", throttleScroll)
-  },[])
+    if(y>innerHeight*14){
+      setTimeout(() => {
+        setDirectionsPage(1);
+        setFooterOn(0);
+      }, 1000);
+    }else if(y>innerHeight*12){
+      setFooterOn('-40vh');
+      setDirectionsPage(0);
+      setTimeout(() => {
+        setCPage3Opacity(1);
+      }, 1000);
+    }else if(y>innerHeight*10){
+      setTimeout(() => {
+        setCPage2Opacity(1)
+      }, 1000);
+    }else if(y>innerHeight*8){
+      setPage4Opacity(0);
+      setTimeout(() => {
+        setCPage1Opacity(1)
+      }, 1000);
+    }else if(y>innerHeight*6){
+      setCPage1Opacity(0)
+      setPage3Opacity(0);
+      setTimeout(() => {
+        setPage4Opacity(1);
+      }, 500);
+    }else if(y>innerHeight*4){
+      setPage4Opacity(0);
+      setPage2Opacity(0);
+      setTimeout(() => {
+        setPage3Opacity(1);
+      }, 500);
+    }else if(y>innerHeight*2){
+      setPage3Opacity(0);
+      setTimeout(() => {
+        setPage2Opacity(1);
+      }, 500);
+    }else if(y<(innerHeight*2)){
+      setPage2Opacity(0);
+    }else{
+      setPage2Opacity(0);
+      setPage3Opacity(0);
+      setPage4Opacity(0);
+      setCPage1Opacity(0);
+      setCPage2Opacity(0);
+      setCPage3Opacity(0);
+      setDirectionsPage(0);
+    }
 
-  const dirPage = (a)=>{
-    setTimeout(() => {
-      return a;
-    }, 2000);
-  }
+    
+  },[y])
+
   return (
     <div id='main'>
       {/* <div id='page1' style={{opacity: page1Opacity}}> */}
@@ -157,19 +100,20 @@ const Main = () => {
       </div>
       <div id='emptyBox'></div>
       {/* <div id='page2' style={{opacity: page2Opacity}}> */}
-      <div id='page2' style={{opacity: y >innerHeight*4? 0: (y>innerHeight*2? 1 : 0) }}>
+      <div id='page2' style={{opacity: y >innerHeight*4? 0: (y>innerHeight*2? page2Opacity : 0) }}>
         <img src='/images/page21.jpg' alt='' />
         <p>한 땀 한 땀 <br/> 장인의 손길로</p>
       </div>
       {/* <div id='page3' style={{opacity: page3Opacity}}> */}
-      <div id='page3' style={{opacity: y>innerHeight*6? 0 : (y>innerHeight*4? 1 : 0)}}>
+      <div id='page3' style={{opacity: y>innerHeight*6? 0 : (y>innerHeight*4? page3Opacity : 0)}}>
         <img src='/images/page22.jpg' alt='' />
         <p>오직 당신에게<br/>꼭 맞는 당신만의</p>
       </div>
       {/* <div id='page4' style={{opacity: page4Opacity}}> */}
-      <div id='page4' style={{opacity: y>innerHeight*8? 0 : (y>innerHeight*6? 1 : 0)}}>
+      <div id='page4' style={{opacity: y>innerHeight*8? 0 : (y>innerHeight*6? page4Opacity : 0)}}>
         <img src='/images/main6.jpg' alt='' />
         <p>BARON</p>
+        <span>made for you only</span>
       </div>
       {/* <div className='categoryPage' style={{opacity: categoryPage1,zIndex:cPage1Z}}> */}
       <div className='categoryPage' style={{opacity: y>innerHeight*8? "1":"0",zIndex: y>innerHeight*10? "1":(y>innerHeight*8? "10": "1")}}>
@@ -212,7 +156,7 @@ const Main = () => {
         </div>
       </div>
       {/* <div id='directionsPage' style={{opacity:directionsPage, zIndex:directionsPageZIndex}}> */}
-      <div id='directionsPage' style={{opacity: y>innerHeight*14? dirPage(1) : 0, zIndex:directionsPageZIndex}}>
+      <div id='directionsPage' style={{opacity:y>innerHeight*14? directionsPage : 0, zIndex:y>innerHeight*14? 3 : 0}}>
         <div className='directionLeftPage'>
           <div id='shopImg'>
             <img src="/images/shopImg.jpg" alt='' id='shopImgDetail' />
@@ -220,7 +164,7 @@ const Main = () => {
           <Map />
         </div>
         {/* <div className='directionRightPage' style={{opacity:directionsPage}}> */}
-        <div className='directionRightPage' style={{opacity: y>innerHeight*14? dirPage(1) : 0}}>
+        <div className='directionRightPage' style={{opacity: y>innerHeight*14? directionsPage : 0}}>
           <h2>Directions</h2>
           <div id='textBox'>
             <p>Address.<span><br/>전라남도 순천시 왕지5길 54 1층<br/>전라남도 순천시 왕지동 855-10 1층</span></p>
@@ -234,8 +178,8 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div className='footer' style={{bottom: footerOn, zIndex: footerZIndex}}>
-      {/* <div className='footer' style={{bottom: y>innerHeight*14? 0: "-40vh", zIndex: footerZIndex}}> */}
+      {/* <div className='footer' style={{bottom: y>innerHeight*14? 0 : "-40vh", zIndex: y>innerHeight*14? 5 : 0}}> */}
+      <div className='footer' style={{bottom:y>innerHeight*14? footerOn: "-40vh", zIndex: y>innerHeight*14? 5 : 0}}>
         <Footer />
       </div>
     </div>
