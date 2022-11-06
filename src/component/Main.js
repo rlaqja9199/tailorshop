@@ -127,7 +127,7 @@ const Main = () => {
             <h3>BESPOKE</h3>
             <p>"특별한 사람을 위하여 <br/><br/> 특별히 만들어진"</p>
             <span>Own your fit</span>
-            <div className='detailView'>DETAIL VIEW</div>
+            <div className='detailView'><Link to="/aboutus">DETAIL VIEW</Link></div>
           </div>
         </div>
       </div>
@@ -140,7 +140,7 @@ const Main = () => {
             <h3>Competitiveness</h3>
             <p>"작은 디테일의 차이가 <br/><br/>명품을 만듭니다"</p>
             <span>Own your fit</span>
-            <div className='detailView'>DETAIL VIEW</div>
+            <div className='detailView'><Link to="/aboutus">DETAIL VIEW</Link></div>
           </div>
         </div>
       </div>
@@ -153,7 +153,7 @@ const Main = () => {
             <h3>WEDDING</h3>
             <p>"한번뿐인 <br/>그 날을 위해<br/><br/>하나뿐인 당신에게"</p>
             <span>Own your fit</span>
-            <div className='detailView'>DETAIL VIEW</div>
+            <div className='detailView'><Link to="/aboutus">DETAIL VIEW</Link></div>
           </div>
         </div>
       </div>
