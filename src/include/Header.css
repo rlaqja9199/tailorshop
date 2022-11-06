@@ -113,9 +113,6 @@
     width: 50%;
     overflow: hidden;
 }
-#menuWrap div img{
-    width: 200%;
-}
 #menuWrap ul {
     width: 50%;
     height: 100vh;

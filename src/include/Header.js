@@ -22,7 +22,7 @@ const Header = () => {
   const [loginBoxOpacity, setLoginBoxOpacity] = useState(0);
   const [userNameLineColor, setUserNameLineColor] = useState('#CFD2CF');
   const [passwordLineColor, setPasswordLineColor] = useState('#CFD2CF');
-  const [innerWidth, setInnerWidth] = useState();
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
   const [cookies, setCookie, removeCookie] = useCookies(['username']);
   const [userId, setUserId] = useState(null);
@@ -58,6 +58,7 @@ const Header = () => {
     window.addEventListener('resize',()=>{
       setInnerWidth(window.innerWidth);
     })
+    console.log(innerWidth)
   },[])
   const loginOpen = ()=>{
     if(loginLeft===0){
@@ -65,7 +66,7 @@ const Header = () => {
       if(innerWidth>768){
         setLoginRight(-25);
       }else{
-        setLoginRight(0);
+        setLoginRight(-0);
       }
       setMenuImgOpacity(0);
       setLoginBoxOpacity(1);
