@@ -11,6 +11,8 @@ const Promotion = () => {
   const [allPromotionPost, setAllPromotionPost] = useState([]);
   const [regOn, setRegOn] = useState('-360px');
   const [delBtn, setDelBtn] = useState('none');
+  const [slideToShow, setSlidesToShow] = useState(3);
+  const [innerWidth, setInnerWidth] = useState();
   const [formData, setFormData] = useState({
     title: "",
     body: "",
@@ -31,7 +33,6 @@ const Promotion = () => {
     .catch(e=>{
       console.log(e);
     })
-    
   },[])
   const onChageInput = (e)=>{
     const {name, value} = e.target;
@@ -72,8 +73,6 @@ const Promotion = () => {
   }
 
 
-
-
   const mobileOn = ()=>{
     if(regOn === '-360px'){
       setRegOn('50px')
@@ -89,15 +88,22 @@ const Promotion = () => {
       setDelBtn('block')
     }
   }
-
-
-
-
+  useEffect(()=>{
+    window.addEventListener('resize',()=>{
+      setInnerWidth(window.innerWidth);
+    })
+    if(innerWidth>390){
+      setSlidesToShow(3)
+    }else{
+      setSlidesToShow(1);
+    }
+  },[innerWidth])
+  
   let settings = {
     dots: true,
     infinite: true,
     arrows: false,
-    slidesToShow: 3,
+    slidesToShow: slideToShow,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -142,51 +148,6 @@ const Promotion = () => {
           {allPromotionPost.map(post=>(
                     <PromotionPost key={post.id} post={post} delBtn={delBtn}/>
                 ))} 
-          {/* <div className='slideImg'>
-            <div style={{width:`100%`, height:`430px`,overflow:`hidden`}}>
-              <img src='/images/fallPromotion1.jpg' alt='' />
-            </div>
-            <h4 className='postTitle'>가을 프로모션 진행</h4>
-            <p className='postBody'>
-              2022년 가을을 맞아 진행하는 프로모션<br/> 제일모직 및 바론패브릭 원단으로 맞춤시 30% 할인
-            </p>
-            <p className='postPeriod'>8월30일 ~ 11월30일</p>
-          </div>
-          <div className='slideImg'>
-            <div style={{width:`100%`, height:`430px`,overflow:`hidden`}}>
-              <img src='/images/shoes1.jpg' alt='' />
-            </div>
-            <h4 className='postTitle'>수제화 프로모션</h4>
-            <p className='postBody'>
-              이탈리아 Marche지역의 수세기동안 걸쳐 전승된
-              신발 장인들의 뛰어난 제화 솜씨를 그대로 느낄 수 있는
-              바론만의 맞춤 구두를 20% 할인 프로모션 진행중입니다.
-            </p>
-            <p className='postPeriod'>8월30일 ~ 11월30일</p>
-          </div>
-          <div className='slideImg'>
-            <div style={{width:`100%`, height:`430px`,overflow:`hidden`}}>
-              <img src='/images/fabric1.png' alt='' />
-            </div>
-            <h4 className='postTitle'>이태리 고급 수입원단 프로모션</h4>
-            <p className='postBody'>
-              이태리 고급 수입 원단만의 고급스럽고
-              입을 수록 편안한 느낌의 맞춤 정장을
-              10% 프로모션 진행중입니다.
-            </p>
-            <p className='postPeriod'>8월30일 ~ 11월30일</p>
-          </div>
-          <div className='slideImg'>
-            <div style={{width:`100%`, height:`430px`,overflow:`hidden`}}>
-              <img src='/images/fallPromotion1.jpg' alt='' />
-            </div>
-            <h4 className='postTitle'>가을 프로모션 진행</h4>
-            <p className='postBody'>
-              2022년 가을을 맞아 진행하는 프로모션<br/>
-              제일모직 및 바론패브릭 원단으로 맞춤시 30% 할인
-            </p>
-            <p className='postPeriod'>8월30일 ~ 11월30일</p>
-          </div> */}
         </Slider>
       </div>
     </div>

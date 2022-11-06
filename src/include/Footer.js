@@ -11,7 +11,7 @@ const Footer = () => {
             <p>ADDRESS : 전라남도 순천시 왕지5길 54 1층</p>
             <p>M. 010-1234-5678</p>
             <p>BUSINESS LICENSE : 123-45-67890</p>
-            <p>2020 ⓒ Copyright BARONTAILOR. Design by BEOM.</p>
+            <p><br/>2020 ⓒ Copyright BARONTAILOR. Design by BEOM.</p>
         </div>
         <div id='rightFooter'>
             <p><a href='#'><BsInstagram /></a></p>

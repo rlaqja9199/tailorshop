@@ -41,16 +41,18 @@ const Main = () => {
         setFooterOn(0);
       }, 1000);
     }else if(y>innerHeight*12){
-      setFooterOn('-40vh');
+      setFooterOn('-50vh');
       setDirectionsPage(0);
       setTimeout(() => {
         setCPage3Opacity(1);
       }, 1000);
     }else if(y>innerHeight*10){
+      setCPage3Opacity(0);
       setTimeout(() => {
         setCPage2Opacity(1)
       }, 1000);
     }else if(y>innerHeight*8){
+      setCPage2Opacity(0)
       setPage4Opacity(0);
       setTimeout(() => {
         setCPage1Opacity(1)
@@ -136,7 +138,7 @@ const Main = () => {
         <div className='rightMainPage cPageR2' style={{bottom: y>innerHeight*12? '100vh' : (y>innerHeight*10? '0' : "-100vh")}}>
           <div style={{opacity:cPage2Opacity}}>
             <h3>Competitiveness</h3>
-            <p>"작은 디테일의 차이가 <br/>명품을 만듭니다"</p>
+            <p>"작은 디테일의 차이가 <br/><br/>명품을 만듭니다"</p>
             <span>Own your fit</span>
             <div className='detailView'>DETAIL VIEW</div>
           </div>
@@ -149,7 +151,7 @@ const Main = () => {
         <div className='rightMainPage cPageR3' style={{bottom: y>innerHeight*14? '100vh' : (y>innerHeight*12? '0' : "-100vh")}}>
           <div style={{opacity:cPage3Opacity}}>
             <h3>WEDDING</h3>
-            <p>"한번뿐인 그 날을 위해<br/>하나뿐인 당신에게"</p>
+            <p>"한번뿐인 <br/>그 날을 위해<br/><br/>하나뿐인 당신에게"</p>
             <span>Own your fit</span>
             <div className='detailView'>DETAIL VIEW</div>
           </div>
@@ -171,15 +173,11 @@ const Main = () => {
             <p>TEL. <span>061-722-7983</span><br/>M. <span>010-1234-5678</span></p>
             <p>Open. <span>11:00</span><br/>Close. <span>20:00</span></p>
             <p>Closed. <span>화요일</span></p>
-            <p>
-              Car. <span>순천역에서 5.7km, 15분 소요</span><br/>
-              Bus. <span>순천역에서 56번버스 탑승, 범암에서 하차 후 도보 1분 </span>
-            </p>
           </div>
         </div>
       </div>
       {/* <div className='footer' style={{bottom: y>innerHeight*14? 0 : "-40vh", zIndex: y>innerHeight*14? 5 : 0}}> */}
-      <div className='footer' style={{bottom:y>innerHeight*14? footerOn: "-40vh", zIndex: y>innerHeight*14? 5 : 0}}>
+      <div className='footer' style={{bottom:y>innerHeight*14? footerOn: "-50vh", zIndex: y>innerHeight*14? 5 : 0}}>
         <Footer />
       </div>
     </div>

@@ -252,7 +252,6 @@
     border-radius: 0 2px 2px 0;
 }
 
-
 /* 삭제버튼 */
 .delBtn {
     position: absolute;
@@ -269,4 +268,24 @@
     cursor: pointer;
     border: none;
     font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    #reviewImg{
+        font-size: 80px;
+    }
+    #reviewPost h3{
+        font-size: 60px;
+    }
+    .regBtn{
+        top: 4%;
+    }
+    #reviewPostList{
+        height: auto;
+        flex-wrap: nowrap;
+        overflow: unset;
+    }
+    .postList{
+        width: 100%;
+    }
 }

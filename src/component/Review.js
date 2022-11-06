@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie';
+import Footer from '../include/Footer';
 import { API_URL } from './config/contansts';
 import './Review.css'
 import ReviewPost from './ReviewPost';
@@ -78,7 +79,7 @@ const Review = () => {
       username: cookies.username,
     });
     if(regOn === '-360px'){
-      setRegOn('50px')
+      setRegOn('20px')
     }else {
       setRegOn('-360px')
 
@@ -133,90 +134,6 @@ const Review = () => {
           {allReview.map(post=>(
             <ReviewPost key={post.id} post={post} delBtn={delBtn}/>
           ))}
-
-
-            {/* <div className='postList'>
-              <div className='reviewPostImg'>
-                <img src='/images/review1.jpg' alt='' />
-              </div>
-              <div className='reviewPostText'>
-                <h4>바론에서 맞춤정장 맞추고 왔어요!</h4>
-                <p>정말 친절하게 하나한 꼼꼼하게 잘해주셨습니다. 궁금한 점들도 먼저 하나하나 설명해주시고 정말 좋았습니다.</p>
-              </div>
-            </div>
-            <div className='postList'>
-              <div className='reviewPostImg'>
-                <img src='/images/review4.jpg' alt='' />
-              </div>
-              <div className='reviewPostText'>
-                <h4>바론에서 맞춤정장 맞추고 왔어요!</h4>
-                <p>정말 친절하게 하나한 꼼꼼하게 잘해주셨습니다. 궁금한 점들도 먼저 하나하나 설명해주시고 정말 좋았습니다.</p>
-              </div>
-            </div>
-            <div className='postList'>
-              <div className='reviewPostImg'>
-                <img src='/images/review5.jpg' alt='' />
-              </div>
-              <div className='reviewPostText'>
-                <h4>바론에서 맞춤정장 맞추고 왔어요!</h4>
-                <p>정말 친절하게 하나한 꼼꼼하게 잘해주셨습니다. 궁금한 점들도 먼저 하나하나 설명해주시고 정말 좋았습니다.</p>
-              </div>
-            </div>
-            <div className='postList'>
-              <div className='reviewPostImg'>
-                <img src='/images/review1.jpg' alt='' />
-              </div>
-              <div className='reviewPostText'>
-                <h4>바론에서 맞춤정장 맞추고 왔어요!</h4>
-                <p>정말 친절하게 하나한 꼼꼼하게 잘해주셨습니다. 궁금한 점들도 먼저 하나하나 설명해주시고 정말 좋았습니다.</p>
-              </div>
-            </div>
-            <div className='postList'>
-              <div className='reviewPostImg'>
-                <img src='/images/review6.jpg' alt='' />
-              </div>
-              <div className='reviewPostText'>
-                <h4>바론에서 맞춤정장 맞추고 왔어요!</h4>
-                <p>정말 친절하게 하나한 꼼꼼하게 잘해주셨습니다. 궁금한 점들도 먼저 하나하나 설명해주시고 정말 좋았습니다.</p>
-              </div>
-            </div>
-            <div className='postList'>
-              <div className='reviewPostImg'>
-                <img src='/images/review2.png' alt='' />
-              </div>
-              <div className='reviewPostText'>
-                <h4>바론에서 맞춤정장 맞추고 왔어요!</h4>
-                <p>정말 친절하게 하나한 꼼꼼하게 잘해주셨습니다. 궁금한 점들도 먼저 하나하나 설명해주시고 정말 좋았습니다.</p>
-              </div>
-            </div>
-            <div className='postList'>
-              <div className='reviewPostImg'>
-                <img src='/images/review3.jpg' alt='' />
-              </div>
-              <div className='reviewPostText'>
-                <h4>바론에서 맞춤정장 맞추고 왔어요!</h4>
-                <p>정말 친절하게 하나한 꼼꼼하게 잘해주셨습니다. 궁금한 점들도 먼저 하나하나 설명해주시고 정말 좋았습니다.</p>
-              </div>
-            </div>
-            <div className='postList'>
-              <div className='reviewPostImg'>
-                <img src='/images/review7.jpg' alt='' />
-              </div>
-              <div className='reviewPostText'>
-                <h4>바론에서 맞춤정장 맞추고 왔어요!</h4>
-                <p>정말 친절하게 하나한 꼼꼼하게 잘해주셨습니다. 궁금한 점들도 먼저 하나하나 설명해주시고 정말 좋았습니다.</p>
-              </div>
-            </div>
-            <div className='postList'>
-              <div className='reviewPostImg'>
-                <img src='/images/review1.jpg' alt='' />
-              </div>
-              <div className='reviewPostText'>
-                <h4>바론에서 맞춤정장 맞추고 왔어요!</h4>
-                <p>정말 친절하게 하나한 꼼꼼하게 잘해주셨습니다. 궁금한 점들도 먼저 하나하나 설명해주시고 정말 좋았습니다.</p>
-              </div>
-            </div> */}
-
         </div>
       </div>
     </div>

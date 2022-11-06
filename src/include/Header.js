@@ -16,12 +16,13 @@ const Header = () => {
   const [menuImgOpacity, setMenuImgOpacity] = useState(1);
   const [loginLeft, setLoginLeft] = useState(0);
   const [loginLeftImg, setLoginLeftImg] = useState(-200);
-  const [loginRight, setLoginRight] = useState(-50);
+  const [loginRight, setLoginRight] = useState(-100);
   const [loginTextOn, setLoginTextOn] = useState(0);
   const [passwordTextOn, setPasswordTextOn] = useState(0);
   const [loginBoxOpacity, setLoginBoxOpacity] = useState(0);
   const [userNameLineColor, setUserNameLineColor] = useState('#CFD2CF');
   const [passwordLineColor, setPasswordLineColor] = useState('#CFD2CF');
+  const [innerWidth, setInnerWidth] = useState();
 
   const [cookies, setCookie, removeCookie] = useCookies(['username']);
   const [userId, setUserId] = useState(null);
@@ -36,7 +37,7 @@ const Header = () => {
       setMenuOn('-100vh')
       setCloseIconOpacity(0);
       setLoginLeft(0);
-      setLoginRight(-50);
+      setLoginRight(-100);
       setMenuImgOpacity(1);
       setLoginBoxOpacity(0);
       setLoginLeftImg(-200)
@@ -53,15 +54,24 @@ const Header = () => {
   
   
   //로그인
+  useEffect(()=>{
+    window.addEventListener('resize',()=>{
+      setInnerWidth(window.innerWidth);
+    })
+  },[])
   const loginOpen = ()=>{
     if(loginLeft===0){
       setLoginLeft(1);
-      setLoginRight(-25);
+      if(innerWidth>768){
+        setLoginRight(-25);
+      }else{
+        setLoginRight(0);
+      }
       setMenuImgOpacity(0);
       setLoginBoxOpacity(1);
     }else{
       setLoginLeft(0);
-      setLoginRight(-50);
+      setLoginRight(-100);
       setMenuImgOpacity(1);
     }
   }
@@ -207,7 +217,7 @@ const Header = () => {
                     <div></div>
                   </div>
                 </li>
-                <li style={{display:userId!==null? "inline-block":"none", position:"absolute", top:"80px"}}><span style={{fontSize:"50px", lineHeight:"50px", cursor:"default"}}>{userId}</span>님 환영합니다.</li>
+                <li id='userWelcom' style={{display:userId!==null? "inline-block":"none", position:"absolute", top:innerWidth>768?"80px":"40px"}}><span style={{fontSize:"50px", lineHeight:"50px", cursor:"default"}}>{userId}</span>님 환영합니다.</li>
                 <li><span><a href="/">Home</a></span></li>
                 <li><span onClick={menuOpen}><Link to="/aboutus">AboutUs</Link></span></li>
                 <li><span onClick={menuOpen}><Link to="/promotion">Promotion</Link></span></li>

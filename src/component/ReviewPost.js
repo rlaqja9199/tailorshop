@@ -37,7 +37,7 @@ const ReviewPost = (props) => {
             <div className='reviewPostImg'>
               <img src={`${API_URL}/${post.imgsrc}`} alt='' />
               <form onSubmit={delSubmit}>
-                <button name='postId' type='submit' className='delBtn' style={{display:cookies.username === post.username? props.delBtn : "none"}}>삭제</button>
+                <button name='postId' type='submit' className='delBtn' style={{display:cookies.username === post.username || 'admin'? props.delBtn : "none"}}>삭제</button>
               </form>
             </div>
             <div className='reviewPostText'>

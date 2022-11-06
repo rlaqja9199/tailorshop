@@ -260,3 +260,15 @@
     border: none;
     font-weight: bold;
 }
+
+@media screen and (max-width: 768px) {
+    #promotionImg{
+        font-size: 80px;
+    }
+    #promotionPost h3{
+        font-size: 60px;
+    }
+    #promotionPost .regBtn{
+        top: 15%;
+    }
+}

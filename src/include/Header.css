@@ -220,7 +220,7 @@
     width: 50%;
     height: 100vh;
     background-image: linear-gradient(45deg, #fdfcfb 0%, #e2d1c3 100%);
-    transition: 0.8s;
+    transition: 1s;
 }
 #loginRight #loginBox {
     position: absolute;
@@ -275,7 +275,7 @@
     width: 200px;
     height: 40px;
     border-radius: 6px;
-    margin: 28px 0;
+    margin: 28px auto;
     cursor: pointer;
 }
 #loginRight #loginBox #signBox {
@@ -292,7 +292,6 @@
     color: #4d4d4d;
 }
 
-
 @media screen and (max-width: 768px) {
     #menuWrap div img{
         height: 100vh;
@@ -300,4 +299,35 @@
         position: absolute;
         left: 0;
     }
+    #whiteLine{
+        position: relative;
+    }
+    #wineLine{
+        display: none;
+    }
+    #menu:hover p{
+        color: #fff;
+    }
+    #loginRight{
+        width: 100%;
+    }
+    #loginRight #loginBox{
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    #menuWrap ul li {
+        padding-left: 0;
+    }
+    #menuWrap ul #userWelcom {
+        left: 0;
+        padding-left: 10%;
+        font-size: 30px;
+    }
+    #loginRight #loginBox #signBox{
+        justify-content: space-evenly
+    }
+    #loginRight #loginBox #signBox button{
+        padding: 0;
+    }
+    
 }

@@ -14,7 +14,7 @@ const AboutUs = () => {
     window.addEventListener('scroll',()=>{
       const scrollY = window.scrollY;
       const innerHeight = window.innerHeight;
-      console.log(scrollY);
+      // console.log(scrollY);
       
       if(scrollY>0){
         setTextOpacity(1);
@@ -85,6 +85,9 @@ const AboutUs = () => {
         </div>
       </div>
       <ul id='aboutUsList'>
+        <li>
+          <p className='clickAni'>Click</p>
+        </li>
         <li>
           <p className='listName' onClick={listOn}>Competitiveness</p>
           <div className='aboutUsListScreen competitiveness' style={{display:competitiveness}}>

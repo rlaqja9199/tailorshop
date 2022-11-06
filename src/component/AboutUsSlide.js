@@ -21,9 +21,22 @@ export default class AboutUsSlide extends Component {
     detailSrc: '',
     detailOn: 'none',
     linkIdNum: '',
+    slidesToShow: 3,
+  }
+  componentDidMount() {
+    const innerWidth = window.innerWidth;
+    if(innerWidth>390){
+      this.setState({
+        slidesToShow: 3
+      });
+    }else{
+      this.setState({
+        slidesToShow: 1
+      })
+    }
   }
   render() {
-    const {detailSrc, detailOn, linkIdNum} = this.state;
+    const {detailSrc, detailOn, linkIdNum, slidesToShow} = this.state;
     console.log("그리는중")
     
     const settings2 = {
@@ -31,7 +44,7 @@ export default class AboutUsSlide extends Component {
       arrows: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 3,
+      slidesToShow: slidesToShow,
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 3000,
@@ -50,12 +63,12 @@ export default class AboutUsSlide extends Component {
       detailLink = imgLink;
       this.setState({detailSrc: detailLink, detailOn: 'block', linkIdNum: linkArray});
       this.pause();
-    }
+    };
     const detailImgOff = ()=>{
       this.setState({detailOn: 'none'})
       this.play();
       
-    }
+    };
     return (
       <div id="aboutUsSlide">
         <div id="slideDetail" style={{display:`${detailOn}`}}>
