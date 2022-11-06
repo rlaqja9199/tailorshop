@@ -10,7 +10,7 @@
     background-image: url('../../public/images/reviewImg2.jpg');
     background-color: black;
     background-repeat: no-repeat;
-    background-position: center -200px;
+    background-position: center -100px;
     background-attachment: fixed;
     background-size: cover;
     filter: grayscale(30%);
