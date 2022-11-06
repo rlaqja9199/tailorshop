@@ -243,7 +243,7 @@ const Header = () => {
                           </li>
                           <li>
                             <p style={{opacity:passwordTextOn}}>PASSWORD</p>
-                            <input type="text" name='password' value={loginData.password} onChange={onChangePw} onFocus={inputFocus} placeholder='PASSWORD' />
+                            <input type="password" name='password' value={loginData.password} onChange={onChangePw} onFocus={inputFocus} placeholder='PASSWORD' />
                             <div className='inputLine' style={{backgroundColor:passwordLineColor}}></div>
                           </li>
                           <li>
