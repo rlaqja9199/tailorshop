@@ -133,7 +133,7 @@
 
 
 /* 카테고리 페이지 */
-.categoryPage {
+.cPage{
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -145,11 +145,41 @@
     transition: 2s;
     z-index: 3;
 }
+.leftCPage{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 300vh;
+    top: -300vh;
+    left: 0;
+    transition: 1s;
+    transform: translateY(-300vh);
+}
+.rightCPage{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 300vh;
+    bottom: -300vh;
+    right: 0;
+    transition: 1s;
+}
+/* .categoryPage {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    overflow: hidden;
+    text-align: start;
+    left: 0;
+    top: 0;
+    transition: 2s;
+    z-index: 3;
+} */
 
 .leftMainPage {
-    width: 50%;
+    width: 100%;
     height: 100vh;
-    position: absolute;
     left: 0;
     top: 0;
     transition: 1s;
@@ -163,10 +193,9 @@
 
 
 .rightMainPage { 
-    width: 50%;
+    width: 100%;
     height: 100vh;
     color: #eee;
-    position: absolute;
     padding-left: 120px;
     right: 0;
     bottom: 0;
@@ -209,21 +238,23 @@
     cursor: pointer;
     z-index: 2;
     transition: 1s;
-    cursor: pointer;
 }
 
 
 /* 카테고리페이지 백그라운드컬러 */
 .cPageL1, .cPageR1{
     background-color: #204030;
+    position: relative;
 }
 
 .cPageL2, .cPageR2{
     background-color:   #720d0d;
+    position: relative;
 }
 
 .cPageL3, .cPageR3{
     background-color: #AA9A8A;
+    position: relative;
 }
 
 

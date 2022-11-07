@@ -6,6 +6,7 @@ import Map from './Map'
 import WeatherTab from './WeatherTab'
 import { throttle } from 'lodash';
 import { useScroll } from './hooks/useScroll'
+import { Link } from 'react-router-dom'
 
 const Main = () => {
   const [textBlur, setTextBlur] = useState('2px 2px 20px #fff');
@@ -117,44 +118,43 @@ const Main = () => {
         <p>BARON</p>
         <span>made for you only</span>
       </div>
-      {/* <div className='categoryPage' style={{opacity: categoryPage1,zIndex:cPage1Z}}> */}
-      <div className='categoryPage' style={{opacity: y>innerHeight*8? "1":"0",zIndex: y>innerHeight*10? "1":(y>innerHeight*8? "10": "1")}}>
-        <div className='leftMainPage cPageL1' style={{top: y>innerHeight*10? '100vh' : (y>innerHeight*8? '0' : "-100vh")}}>
-          <img src='/images/bespoke1.jpg' alt='' style={{opacity: cPage1Opacity}} />
+      <div className='cPage' style={{opacity: y>innerHeight*8? "1":"0"}}>
+        <div className='leftCPage' style={{transform: `translateY(${y>innerHeight*14? '100vh' : (y>innerHeight*12? '0' : (y>innerHeight*10? '-100vh' : (y>innerHeight*8? '-200vh' : '-300vh')))})`}}>
+            <div className='leftMainPage cPageL3'>
+                <img src='/images/wedding1.jpg' alt='' style={{opacity:cPage3Opacity}} />
+            </div>
+            <div className='leftMainPage cPageL2'>
+                <img src='/images/competitiveness.jpg' alt='' style={{opacity:cPage2Opacity}} />
+            </div>
+            <div className='leftMainPage cPageL1'>
+                <img src='/images/bespoke1.jpg' alt='' style={{opacity: cPage1Opacity}} />
+            </div>
         </div>
-        <div className='rightMainPage cPageR1' style={{bottom: y>innerHeight*10? '100vh' : (y>innerHeight*8? '0' : "-100vh")}}>
-          <div id='p1Text' style={{opacity: cPage1Opacity}}>
-            <h3>BESPOKE</h3>
-            <p>"특별한 사람을 위하여 <br/><br/> 특별히 만들어진"</p>
-            <span>Own your fit</span>
-            <div className='detailView'><Link to="/aboutus">DETAIL VIEW</Link></div>
-          </div>
-        </div>
-      </div>
-      <div className='categoryPage' style={{zIndex: y>innerHeight*12? "1":(y>innerHeight*10? "10": "1")}}>
-        <div className='leftMainPage cPageL2' style={{top: y>innerHeight*12? '100vh' : (y>innerHeight*10? '0' : "-100vh")}}>
-          <img src='/images/competitiveness.jpg' alt='' style={{opacity:cPage2Opacity}} />
-        </div>
-        <div className='rightMainPage cPageR2' style={{bottom: y>innerHeight*12? '100vh' : (y>innerHeight*10? '0' : "-100vh")}}>
-          <div style={{opacity:cPage2Opacity}}>
-            <h3>Competitiveness</h3>
-            <p>"작은 디테일의 차이가 <br/><br/>명품을 만듭니다"</p>
-            <span>Own your fit</span>
-            <div className='detailView'><Link to="/aboutus">DETAIL VIEW</Link></div>
-          </div>
-        </div>
-      </div>
-      <div className='categoryPage' style={{zIndex: y>innerHeight*14? "1":(y>innerHeight*12? "10": "1")}}>
-        <div className='leftMainPage cPageL3' style={{top: y>innerHeight*14? '100vh' : (y>innerHeight*12? '0' : "-100vh")}}>
-          <img src='/images/wedding1.jpg' alt='' style={{opacity:cPage3Opacity}} />
-        </div>
-        <div className='rightMainPage cPageR3' style={{bottom: y>innerHeight*14? '100vh' : (y>innerHeight*12? '0' : "-100vh")}}>
-          <div style={{opacity:cPage3Opacity}}>
-            <h3>WEDDING</h3>
-            <p>"한번뿐인 <br/>그 날을 위해<br/><br/>하나뿐인 당신에게"</p>
-            <span>Own your fit</span>
-            <div className='detailView'><Link to="/aboutus">DETAIL VIEW</Link></div>
-          </div>
+        <div className='rightCPage' style={{transform: `translateY(${y>innerHeight*14? '-300vh' : (y>innerHeight*12? '-200vh' : (y>innerHeight*10? '-100vh' : (y>innerHeight*8? '0' : '100vh')))})`}}>
+            <div className='rightMainPage cPageR1'>
+                <div id='p1Text' style={{opacity: cPage1Opacity}}>
+                <h3>BESPOKE</h3>
+                <p>"특별한 사람을 위하여 <br/><br/> 특별히 만들어진"</p>
+                <span>Own your fit</span>
+                <div className='detailView'><Link to="/aboutus">DETAIL VIEW</Link></div>
+                </div>
+            </div>
+            <div className='rightMainPage cPageR2'>
+                <div style={{opacity:cPage2Opacity}}>
+                <h3>Competitiveness</h3>
+                <p>"작은 디테일의 차이가 <br/><br/>명품을 만듭니다"</p>
+                <span>Own your fit</span>
+                <div className='detailView'><Link to="/aboutus">DETAIL VIEW</Link></div>
+                </div>
+            </div>
+            <div className='rightMainPage cPageR3'>
+                <div style={{opacity:cPage3Opacity}}>
+                <h3>WEDDING</h3>
+                <p>"한번뿐인 <br/>그 날을 위해<br/><br/>하나뿐인 당신에게"</p>
+                <span>Own your fit</span>
+                <div className='detailView'><Link to="/aboutus">DETAIL VIEW</Link></div>
+                </div>
+            </div>
         </div>
       </div>
       {/* <div id='directionsPage' style={{opacity:directionsPage, zIndex:directionsPageZIndex}}> */}
@@ -185,3 +185,14 @@ const Main = () => {
 }
 
 export default Main
+
+
+
+
+
+
+
+
+
+
+
