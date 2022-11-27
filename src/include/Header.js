@@ -144,7 +144,8 @@ const Header = () => {
     if(loginData.username === '' || loginData.password === ''){
       alert('아이디 혹은 비밀번호를 입력해주세요.');
     }else {
-      axios.post(`http://localhost:8080/login`,loginData)
+      // axios.post(`http://localhost:8080/login`,loginData)
+      axios.post(`${API_URL}/login`,loginData)
       .then(result=>{
           // let useremail = result.data.usermail;
           let username = result.data.username;

@@ -166,8 +166,8 @@ const SignUp = () => {
     }
     //insertJoin 함수
     function insertJoin(){
-        axios.post("http://localhost:8080/signup",formData)
-        // axios.post(`${API_URL}/register`,formData)
+        // axios.post("http://localhost:8080/signup",formData)
+        axios.post(`${API_URL}/signup`,formData)
         .then(res=>{
             console.log(res);
             setTimeout(() => {
