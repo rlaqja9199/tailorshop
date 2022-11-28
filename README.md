@@ -6,9 +6,12 @@ The Custom Suit Shop website is not an online ordering website. Despite this, mo
 `React.js`, `Node.js`, `Css`, `Mysql`
 
 ### 2. Deploy
-1. DataBase - AWS
-2. Server - Heroku
-3. DataBase - AWS
+#### 1. Publish
+Vercel
+#### 2. Server
+Heroku
+#### 3. DataBase
+Amazon AWS
 
 ## 2. Environment
 Complete Desktop & Laptop & Mobile Responsive Web
